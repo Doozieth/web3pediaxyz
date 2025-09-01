@@ -540,7 +540,7 @@ const Index = () => {
                         <BookOpen className="h-4 w-4 text-primary" />
                         Detailed Description
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed cursor-text select-text">
                         {(() => {
                           const getDetailedDescription = (term: any) => {
                             switch (term.id) {
