@@ -156,18 +156,29 @@ const Index = () => {
                           {term.category}
                         </Badge>
                         {term.difficulty && (
-                          <Badge 
-                            variant={
-                              term.difficulty === 'Beginner' ? 'default' : 
-                              term.difficulty === 'Intermediate' ? 'secondary' : 
-                              'destructive'
-                            } 
-                            className="text-xs"
-                          >
-                            {term.difficulty === 'Beginner' ? '●' : 
-                             term.difficulty === 'Intermediate' ? '● ●' : 
-                             '● ● ●'}
-                          </Badge>
+                          <span className="text-xs flex items-center gap-0.5">
+                            {term.difficulty === 'Beginner' && (
+                              <>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-gray-300 text-[6px]">●</span>
+                                <span className="text-gray-300 text-[6px]">●</span>
+                              </>
+                            )}
+                            {term.difficulty === 'Intermediate' && (
+                              <>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-gray-300 text-[6px]">●</span>
+                              </>
+                            )}
+                            {term.difficulty === 'Advanced' && (
+                              <>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-pink-500 text-[6px]">●</span>
+                              </>
+                            )}
+                          </span>
                         )}
                       </div>
                     </div>
