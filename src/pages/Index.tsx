@@ -18,7 +18,29 @@ const Index = () => {
   const [sortBy, setSortBy] = useState<string>("default");
   const [isSearchBarSticky, setIsSearchBarSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [bookmarkedTerms, setBookmarkedTerms] = useState<string[]>([]);
   const headerRef = useRef<HTMLElement>(null);
+
+  // Load bookmarks from localStorage on mount
+  useEffect(() => {
+    const savedBookmarks = localStorage.getItem('web3pedia-bookmarks');
+    if (savedBookmarks) {
+      setBookmarkedTerms(JSON.parse(savedBookmarks));
+    }
+  }, []);
+
+  // Save bookmarks to localStorage whenever bookmarkedTerms changes
+  useEffect(() => {
+    localStorage.setItem('web3pedia-bookmarks', JSON.stringify(bookmarkedTerms));
+  }, [bookmarkedTerms]);
+
+  const toggleBookmark = (termId: string) => {
+    setBookmarkedTerms(prev => 
+      prev.includes(termId) 
+        ? prev.filter(id => id !== termId)
+        : [...prev, termId]
+    );
+  };
 
   useEffect(() => {
     let filtered = cryptoTerms;
@@ -116,16 +138,31 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header with centered title */}
       <header ref={headerRef} className="relative text-center pt-16 pb-5 px-4 border-b border-border/10">
-        {/* Theme toggle button in top right */}
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="absolute top-4 right-4 h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
-          aria-label="Toggle dark mode"
-        >
-          {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-        </Button>
+        {/* Top right controls */}
+        <div className="absolute top-4 right-4 flex gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
+            aria-label="View bookmarks"
+          >
+            <Bookmark className="h-5 w-5" />
+            {bookmarkedTerms.length > 0 && (
+              <div className="absolute -top-1 -right-1 h-4 w-4 bg-primary rounded-full text-xs text-primary-foreground flex items-center justify-center">
+                {bookmarkedTerms.length}
+              </div>
+            )}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
+        </div>
         
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
           <span className="font-black">web3</span><span className="font-semibold">pedia</span>
@@ -433,10 +470,14 @@ const Index = () => {
                         <Button
                           variant="ghost"
                           size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleBookmark(term.id);
+                          }}
                           className="h-6 w-6 p-0 text-muted-foreground hover:text-primary bg-transparent border-0 shadow-none hover:bg-transparent"
                           aria-label="Bookmark this term"
                         >
-                          <Bookmark className="h-4 w-4" />
+                          <Bookmark className={`h-4 w-4 ${bookmarkedTerms.includes(term.id) ? 'fill-current text-primary' : ''}`} />
                         </Button>
                       </div>
                     </div>
