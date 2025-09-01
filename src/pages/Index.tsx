@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
+import { allCryptoTerms as cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();

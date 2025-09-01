@@ -1554,21 +1554,391 @@ export const cryptoTerms: CryptoTerm[] = [
   }
 ];
 
+
+// New terms from Coinbase glossary
+export const newCoinbaseTerms: CryptoTerm[] = [
+  {
+    id: 'gamefi',
+    term: 'GameFi',
+    definition: 'Game finance, a fusion of online gaming and decentralized finance, creating an in-game economy with play-to-earn mechanics.',
+    category: 'Gaming',
+    difficulty: 'Intermediate',
+    tags: ['gaming', 'defi', 'play-to-earn', 'nft'],
+    examples: ['Axie Infinity', 'The Sandbox', 'Decentraland games']
+  },
+  {
+    id: 'axie-infinity',
+    term: 'Axie Infinity',
+    definition: 'A popular NFT-based Pokémon-style game where players can earn cryptocurrency by breeding, battling, and trading digital creatures called Axies.',
+    category: 'Gaming',
+    difficulty: 'Beginner',
+    tags: ['nft', 'gaming', 'play-to-earn', 'axs'],
+    examples: ['Breeding Axies for profit', 'Daily quest rewards', 'Scholarship programs']
+  },
+  {
+    id: 'bitcoin-halving',
+    term: 'Bitcoin Halving',
+    definition: 'An event that occurs approximately every four years where the reward for mining Bitcoin blocks is cut in half, reducing the rate of new Bitcoin creation.',
+    category: 'Mining',
+    difficulty: 'Intermediate',
+    tags: ['bitcoin', 'mining', 'supply', 'scarcity'],
+    examples: ['2020 halving reduced rewards from 12.5 to 6.25 BTC', 'Next halving expected in 2024']
+  },
+  {
+    id: 'dex',
+    term: 'Decentralized Exchange (DEX)',
+    definition: 'A cryptocurrency exchange that operates without a central authority, allowing peer-to-peer trading directly from users\' wallets.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['exchange', 'decentralized', 'p2p', 'trading'],
+    examples: ['Uniswap', 'SushiSwap', 'PancakeSwap', '1inch']
+  },
+  {
+    id: 'icp',
+    term: 'Internet Computer (ICP)',
+    definition: 'A blockchain protocol that aims to create a decentralized internet by running on independent data centers worldwide.',
+    category: 'Blockchain',
+    difficulty: 'Advanced',
+    tags: ['blockchain', 'internet', 'decentralized', 'computing'],
+    examples: ['Decentralized websites', 'Smart contract platforms', 'Web3 applications']
+  },
+  {
+    id: 'proof-of-work',
+    term: 'Proof of Work (PoW)',
+    definition: 'A consensus mechanism where miners compete to solve cryptographic puzzles to validate transactions and secure the network.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['consensus', 'mining', 'security', 'energy'],
+    examples: ['Bitcoin mining', 'Ethereum (before merge)', 'Litecoin mining']
+  },
+  {
+    id: 'proof-of-stake',
+    term: 'Proof of Stake (PoS)',
+    definition: 'A consensus mechanism where validators are chosen to create new blocks based on their stake in the network rather than computational power.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['consensus', 'staking', 'validators', 'energy-efficient'],
+    examples: ['Ethereum 2.0', 'Cardano', 'Solana', 'Polygon']
+  },
+  {
+    id: 'protocol',
+    term: 'Protocol',
+    definition: 'A set of rules that establish the structure of a blockchain and allow different parts of the network to communicate.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['rules', 'blockchain', 'communication', 'structure'],
+    examples: ['Bitcoin protocol', 'Ethereum protocol', 'HTTP protocol']
+  },
+  {
+    id: 'technical-analysis',
+    term: 'Technical Analysis',
+    definition: 'The study of statistical trends and patterns in market data to identify potential future price movements.',
+    category: 'Trading',
+    difficulty: 'Intermediate',
+    tags: ['analysis', 'charts', 'patterns', 'trading'],
+    examples: ['Candlestick patterns', 'Support and resistance levels', 'Moving averages']
+  },
+  {
+    id: 'volatility',
+    term: 'Volatility',
+    definition: 'A measure of how much the price of an asset moves up or down over time, indicating the degree of price uncertainty.',
+    category: 'Trading',
+    difficulty: 'Beginner',
+    tags: ['price', 'movement', 'risk', 'uncertainty'],
+    examples: ['Bitcoin\'s high volatility', 'Stablecoin low volatility', 'Market volatility during news events']
+  },
+  {
+    id: 'uniswap',
+    term: 'Uniswap',
+    definition: 'The largest decentralized exchange on Ethereum, using automated market makers (AMM) to facilitate token swaps.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['dex', 'ethereum', 'amm', 'liquidity'],
+    examples: ['Token swapping', 'Liquidity provision', 'UNI governance token']
+  },
+  {
+    id: 'hash-rate',
+    term: 'Hash Rate',
+    definition: 'A measure of the computational power of a blockchain network, group, or individual miner, typically measured in hashes per second.',
+    category: 'Mining',
+    difficulty: 'Intermediate',
+    tags: ['mining', 'power', 'computation', 'security'],
+    examples: ['Bitcoin network hash rate', 'Mining pool hash rate', 'Individual miner hash rate']
+  },
+  {
+    id: 'erc-721',
+    term: 'ERC-721',
+    definition: 'A non-fungible token standard on Ethereum that provides a framework for creating unique, non-interchangeable digital assets.',
+    category: 'NFTs',
+    difficulty: 'Intermediate',
+    tags: ['nft', 'ethereum', 'standard', 'unique'],
+    examples: ['CryptoPunks', 'Bored Ape Yacht Club', 'Digital art collections']
+  },
+  {
+    id: 'evm',
+    term: 'Ethereum Virtual Machine (EVM)',
+    definition: 'A decentralized computation engine that executes smart contracts on the Ethereum network, serving as the runtime environment.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['ethereum', 'smart contracts', 'computation', 'virtual machine'],
+    examples: ['Smart contract execution', 'DApp deployment', 'EVM-compatible chains']
+  },
+  {
+    id: 'node',
+    term: 'Node',
+    definition: 'A computer that participates in a blockchain network by maintaining a copy of the ledger and validating transactions.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['network', 'computer', 'validation', 'decentralization'],
+    examples: ['Bitcoin full nodes', 'Ethereum validators', 'Lightweight nodes']
+  },
+  {
+    id: 'sidechains',
+    term: 'Sidechains',
+    definition: 'Separate blockchain networks that connect to a parent blockchain, allowing for additional functionality and scalability.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['scaling', 'blockchain', 'interoperability', 'layer2'],
+    examples: ['Polygon', 'Liquid Bitcoin sidechain', 'RSK sidechain']
+  },
+  {
+    id: 'brc-20',
+    term: 'BRC-20 Tokens',
+    definition: 'An experimental token standard on the Bitcoin blockchain that enables the creation of fungible tokens similar to ERC-20.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['bitcoin', 'tokens', 'ordinals', 'experimental'],
+    examples: ['ORDI token', 'SATS token', 'Bitcoin-based meme coins']
+  },
+  {
+    id: 'cloud-mining',
+    term: 'Cloud Mining',
+    definition: 'A method of mining cryptocurrencies by renting computing power from remote data centers rather than owning physical hardware.',
+    category: 'Mining',
+    difficulty: 'Beginner',
+    tags: ['mining', 'cloud', 'rental', 'remote'],
+    examples: ['Genesis Mining', 'Hashflare', 'NiceHash marketplace']
+  },
+  {
+    id: 'zero-knowledge-proofs',
+    term: 'Zero-Knowledge Proofs',
+    definition: 'A cryptographic method that allows one party to prove knowledge of information without revealing the information itself.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['cryptography', 'privacy', 'verification', 'zk'],
+    examples: ['zk-SNARKs', 'zk-STARKs', 'Privacy coins like Zcash']
+  },
+  {
+    id: 'erc-20',
+    term: 'ERC-20',
+    definition: 'A technical standard for fungible tokens on Ethereum that defines a common interface for token creation and interaction.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['ethereum', 'tokens', 'standard', 'fungible'],
+    examples: ['USDC', 'LINK', 'UNI', 'Most Ethereum tokens']
+  },
+  {
+    id: 'erc-1155',
+    term: 'ERC-1155',
+    definition: 'A multi-token standard on Ethereum that enables the creation and transfer of both fungible and non-fungible tokens in a single contract.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['ethereum', 'multi-token', 'gaming', 'efficiency'],
+    examples: ['Gaming items', 'Enjin platform', 'OpenSea collections']
+  },
+  {
+    id: 'zk-rollups',
+    term: 'Zero-Knowledge Rollups (ZK Rollups)',
+    definition: 'A Layer 2 scaling solution that bundles transactions off-chain and uses zero-knowledge proofs to validate them on the main chain.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['layer2', 'scaling', 'zero-knowledge', 'ethereum'],
+    examples: ['Polygon zkEVM', 'zkSync', 'StarkNet']
+  },
+  {
+    id: 'blockchain-oracle',
+    term: 'Blockchain Oracle',
+    definition: 'A service that connects blockchains to external systems, enabling smart contracts to access real-world data and events.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['oracle', 'external data', 'smart contracts', 'connectivity'],
+    examples: ['Chainlink', 'Band Protocol', 'Price feeds', 'Weather data']
+  },
+  {
+    id: 'soulbound-tokens',
+    term: 'Soulbound Tokens (SBT)',
+    definition: 'Non-transferable digital tokens that represent credentials, achievements, or identity markers tied permanently to a specific wallet.',
+    category: 'Identity',
+    difficulty: 'Advanced',
+    tags: ['identity', 'non-transferable', 'credentials', 'reputation'],
+    examples: ['Educational certificates', 'Professional credentials', 'Governance participation']
+  },
+  {
+    id: 'interoperability',
+    term: 'Blockchain Interoperability',
+    definition: 'The ability of different blockchain networks to communicate and interact with each other, sharing data and value.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['cross-chain', 'communication', 'bridges', 'connectivity'],
+    examples: ['Cross-chain bridges', 'Cosmos ecosystem', 'Polkadot parachains']
+  },
+  {
+    id: 'bitvm',
+    term: 'Bitcoin BitVM',
+    definition: 'A computing paradigm for expressing Turing-complete Bitcoin contracts without requiring changes to the network\'s consensus rules.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['bitcoin', 'smart contracts', 'turing-complete', 'innovation'],
+    examples: ['Bitcoin smart contracts', 'Advanced Bitcoin scripting', 'Layer 2 solutions']
+  },
+  {
+    id: 'soft-fork',
+    term: 'Soft Fork',
+    definition: 'A backward-compatible upgrade to a blockchain protocol that tightens or adds new rules without breaking compatibility with older versions.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['upgrade', 'backward-compatible', 'protocol', 'consensus'],
+    examples: ['Bitcoin SegWit', 'Taproot upgrade', 'BIP updates']
+  },
+  {
+    id: 'hard-fork',
+    term: 'Hard Fork',
+    definition: 'A non-backward-compatible upgrade to a blockchain protocol that creates a permanent divergence from the original chain.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['upgrade', 'non-compatible', 'split', 'consensus'],
+    examples: ['Bitcoin Cash fork', 'Ethereum Classic split', 'Monero privacy upgrades']
+  },
+  {
+    id: 'token-burning',
+    term: 'Token Burning',
+    definition: 'The permanent removal of tokens from circulation by sending them to an unspendable address, typically to reduce supply.',
+    category: 'Economics',
+    difficulty: 'Intermediate',
+    tags: ['supply', 'deflation', 'economics', 'scarcity'],
+    examples: ['Binance BNB burns', 'Ethereum EIP-1559', 'SHIB token burns']
+  },
+  {
+    id: 'dpos',
+    term: 'Delegated Proof of Stake (DPoS)',
+    definition: 'A consensus mechanism where token holders vote for delegates who validate transactions and secure the network on their behalf.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['consensus', 'delegation', 'voting', 'governance'],
+    examples: ['EOS network', 'Tron blockchain', 'BitShares platform']
+  },
+  {
+    id: 'layer-0',
+    term: 'Layer-0 Protocols',
+    definition: 'The foundational infrastructure layer that enables the creation of Layer-1 blockchains with shared security and interoperability.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['infrastructure', 'foundation', 'interoperability', 'shared-security'],
+    examples: ['Cosmos Hub', 'Polkadot Relay Chain', 'Avalanche consensus']
+  },
+  {
+    id: 'dex-aggregator',
+    term: 'DEX Aggregator',
+    definition: 'A service that searches multiple decentralized exchanges to find the best prices and routes for token swaps.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['dex', 'aggregation', 'price', 'optimization'],
+    examples: ['1inch', 'Matcha', 'ParaSwap', 'Jupiter (Solana)']
+  },
+  {
+    id: 'socialfi',
+    term: 'SocialFi',
+    definition: 'The combination of social media and decentralized finance, creating platforms where users can monetize their social interactions and content.',
+    category: 'Social',
+    difficulty: 'Intermediate',
+    tags: ['social media', 'monetization', 'defi', 'creator economy'],
+    examples: ['Friend.tech', 'Lens Protocol', 'BitClout', 'Mirror.xyz']
+  },
+  {
+    id: 'recovery-phrase',
+    term: 'Recovery Phrase',
+    definition: 'A series of 12 or 24 words generated by a cryptocurrency wallet that can be used to recover access to funds if the wallet is lost.',
+    category: 'Security',
+    difficulty: 'Beginner',
+    tags: ['recovery', 'backup', 'mnemonic', 'security'],
+    examples: ['12-word seed phrase', '24-word recovery phrase', 'BIP39 standard']
+  },
+  {
+    id: 'nft-floor-price',
+    term: 'NFT Floor Price',
+    definition: 'The lowest price for any NFT in a specific collection, often used as a benchmark for the collection\'s overall value.',
+    category: 'NFTs',
+    difficulty: 'Beginner',
+    tags: ['nft', 'price', 'collection', 'valuation'],
+    examples: ['Bored Ape floor price', 'CryptoPunk floor', 'Collection trading activity']
+  },
+  {
+    id: 'impermanent-loss',
+    term: 'Impermanent Loss',
+    definition: 'The potential loss of value when providing liquidity to a DeFi pool due to price changes in the underlying assets.',
+    category: 'DeFi',
+    difficulty: 'Advanced',
+    tags: ['liquidity', 'loss', 'amm', 'risk'],
+    examples: ['Uniswap LP losses', 'Stablecoin pairs', 'Impermanent vs permanent loss']
+  },
+  {
+    id: 'real-world-assets',
+    term: 'Real-World Assets (RWA)',
+    definition: 'Tangible assets from the physical world that are tokenized and represented on blockchain networks.',
+    category: 'Tokenization',
+    difficulty: 'Intermediate',
+    tags: ['tokenization', 'real estate', 'commodities', 'traditional assets'],
+    examples: ['Tokenized real estate', 'Commodity tokens', 'Art tokenization']
+  },
+  {
+    id: 'nftfi',
+    term: 'NFT Finance (NFTFi)',
+    definition: 'Financial services and products built around non-fungible tokens, including lending, borrowing, and derivatives.',
+    category: 'NFTs',
+    difficulty: 'Advanced',
+    tags: ['nft', 'finance', 'lending', 'derivatives'],
+    examples: ['NFT collateralized loans', 'NFT fractionalization', 'NFT derivatives']
+  },
+  {
+    id: 'ipfs',
+    term: 'InterPlanetary File System (IPFS)',
+    definition: 'A decentralized protocol for storing and sharing data in a distributed file system, commonly used for NFT metadata.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['storage', 'decentralized', 'file system', 'metadata'],
+    examples: ['NFT image storage', 'Decentralized websites', 'Distributed content']
+  },
+  {
+    id: 'ieo',
+    term: 'Initial Exchange Offering (IEO)',
+    definition: 'A fundraising method where a cryptocurrency exchange facilitates the token sale on behalf of a startup project.',
+    category: 'Fundraising',
+    difficulty: 'Intermediate',
+    tags: ['fundraising', 'exchange', 'token sale', 'launch'],
+    examples: ['Binance Launchpad', 'Coinbase Launchpool', 'FTX Launchpad']
+  }
+];
+
+// Combine original and new terms
+export const allCryptoTerms = [...cryptoTerms, ...newCoinbaseTerms];
+
 export const categories = [
   'Fundamentals',
-  'Technology',
+  'Technology', 
   'Trading',
   'DeFi',
+  'NFTs',
   'Mining',
   'Security',
-  'NFTs',
-  'Culture',
-  'Social',
-  'Marketing',
   'Psychology',
-  'Compliance',
+  'Culture',
+  'Economics',
+  'Gaming',
+  'Social',
+  'Identity',
+  'Tokenization',
   'Fundraising',
-  'Research'
+  'Blockchain'
 ];
 
 export const difficulties = ['Beginner', 'Intermediate', 'Advanced'];
