@@ -429,9 +429,9 @@ const Index = () => {
                           key={difficulty}
                           checked={selectedDifficulties.includes(difficulty)}
                           onCheckedChange={() => handleDifficultyToggle(difficulty)}
-                          className={`hover:bg-muted/50 ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}
+                          className="hover:bg-muted/50 group"
                         >
-                          <span className={`hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}>
+                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary border-primary' : 'text-foreground'}`}>
                             {difficulty}
                           </span>
                         </DropdownMenuCheckboxItem>
@@ -539,9 +539,9 @@ const Index = () => {
                       key={difficulty}
                       checked={selectedDifficulties.includes(difficulty)}
                       onCheckedChange={() => handleDifficultyToggle(difficulty)}
-                      className={`hover:bg-muted/50 ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}
+                      className="hover:bg-muted/50 group"
                     >
-                      <span className={`hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}>
+                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary border-primary' : 'text-foreground'}`}>
                         {difficulty}
                       </span>
                     </DropdownMenuCheckboxItem>
