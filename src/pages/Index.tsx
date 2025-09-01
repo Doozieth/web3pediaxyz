@@ -369,10 +369,7 @@ const Index = () => {
                           onCheckedChange={() => handleCategoryToggle(category)}
                           className="hover:bg-muted/50"
                         >
-                          <div className="flex items-center gap-2">
-                            <div className={`w-3 h-3 rounded-sm ${getCategoryColor(category).split(' ')[0]} border`}></div>
-                            {category}
-                          </div>
+                          <span className={getCategoryColor(category).split(' ')[1]}>{category}</span>
                         </DropdownMenuCheckboxItem>
                       ))}
                       
@@ -478,10 +475,7 @@ const Index = () => {
                       onCheckedChange={() => handleCategoryToggle(category)}
                       className="hover:bg-muted/50"
                     >
-                      <div className="flex items-center gap-2">
-                        <div className={`w-3 h-3 rounded-sm ${getCategoryColor(category).split(' ')[0]} border`}></div>
-                        {category}
-                      </div>
+                      <span className={getCategoryColor(category).split(' ')[1]}>{category}</span>
                     </DropdownMenuCheckboxItem>
                   ))}
                   
