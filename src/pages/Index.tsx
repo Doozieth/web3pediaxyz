@@ -108,12 +108,10 @@ const Index = () => {
       <header ref={headerRef} className="text-center pt-16 pb-8 px-4 border-b border-border/10">
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">web3pedia</h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
-      </header>
-
-      {/* Sticky Search Bar */}
-      <div className={`transition-all duration-300 ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
-        <div className="max-w-2xl mx-auto relative px-4 py-4">
-          <Search className="absolute left-8 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
+        
+        {/* Search Bar with Filter */}
+        <div className="max-w-2xl mx-auto relative">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
           <Input
             type="text"
             placeholder="Search crypto terms"
@@ -123,7 +121,7 @@ const Index = () => {
           />
            
           {/* Sort and Filter Icons inside search bar */}
-          <div className="absolute right-7 top-1/2 transform -translate-y-1/2 flex gap-1">
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1">
             {/* Sort Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -226,10 +224,251 @@ const Index = () => {
             </DropdownMenu>
           </div>
         </div>
+      </header>
+
+      {/* Sticky Search Bar */}
+      <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center gap-4">
+            {/* Home Button - appears when sticky */}
+            <div className={`transition-all duration-500 ${isSearchBarSticky ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'}`}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-foreground font-semibold hover:bg-primary/10"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                web3pedia
+              </Button>
+            </div>
+            
+            {/* Search Bar */}
+            <div className="flex-1 max-w-2xl mx-auto relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
+              <Input
+                type="text"
+                placeholder="Search crypto terms"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={`pl-12 h-12 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-500 focus:ring-2 focus:ring-primary/50 rounded-xl ${isSearchBarSticky ? 'pr-4' : 'pr-12'}`}
+              />
+               
+              {/* Sort and Filter Icons - animate out when sticky */}
+              <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1 transition-all duration-500 ${isSearchBarSticky ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0'}`}>
+                {/* Sort Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
+                    >
+                      <ArrowUpDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-48 bg-background border border-border/20 shadow-lg z-50">
+                    <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("default")}
+                      className={sortBy === "default" ? "bg-muted/50" : ""}
+                    >
+                      Default
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("a-z")}
+                      className={sortBy === "a-z" ? "bg-muted/50" : ""}
+                    >
+                      A-Z
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("z-a")}
+                      className={sortBy === "z-a" ? "bg-muted/50" : ""}
+                    >
+                      Z-A
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("difficulty-asc")}
+                      className={sortBy === "difficulty-asc" ? "bg-muted/50" : ""}
+                    >
+                      Beginner → Advanced
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("difficulty-desc")}
+                      className={sortBy === "difficulty-desc" ? "bg-muted/50" : ""}
+                    >
+                      Advanced → Beginner
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => setSortBy("category")}
+                      className={sortBy === "category" ? "bg-muted/50" : ""}
+                    >
+                      Category
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* Filter Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
+                    >
+                      <Filter className="h-5 w-5" />
+                      {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                        <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
+                      )}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-64 bg-background border border-border/20 shadow-lg z-50">
+                    <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                    {categories.map((category) => (
+                      <DropdownMenuCheckboxItem
+                        key={category}
+                        checked={selectedCategories.includes(category)}
+                        onCheckedChange={() => handleCategoryToggle(category)}
+                        className="hover:bg-muted/50"
+                      >
+                        {category}
+                      </DropdownMenuCheckboxItem>
+                    ))}
+                    
+                    <DropdownMenuSeparator />
+                    
+                    <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
+                    {difficulties.map((difficulty) => (
+                      <DropdownMenuCheckboxItem
+                        key={difficulty}
+                        checked={selectedDifficulties.includes(difficulty)}
+                        onCheckedChange={() => handleDifficultyToggle(difficulty)}
+                        className="hover:bg-muted/50"
+                      >
+                        {difficulty}
+                      </DropdownMenuCheckboxItem>
+                    ))}
+                    
+                    <DropdownMenuSeparator />
+                    
+                    <DropdownMenuItem onClick={clearFilters} className="text-destructive hover:bg-destructive/10">
+                      Clear All Filters
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+            
+            {/* External Sort and Filter Controls - appear when sticky */}
+            <div className={`flex gap-2 transition-all duration-500 ${isSearchBarSticky ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}>
+              {/* Sort Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-10 px-3 text-muted-foreground hover:text-foreground border-border/20"
+                  >
+                    <ArrowUpDown className="h-4 w-4 mr-2" />
+                    Sort
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48 bg-background border border-border/20 shadow-lg z-50">
+                  <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("default")}
+                    className={sortBy === "default" ? "bg-muted/50" : ""}
+                  >
+                    Default
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("a-z")}
+                    className={sortBy === "a-z" ? "bg-muted/50" : ""}
+                  >
+                    A-Z
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("z-a")}
+                    className={sortBy === "z-a" ? "bg-muted/50" : ""}
+                  >
+                    Z-A
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("difficulty-asc")}
+                    className={sortBy === "difficulty-asc" ? "bg-muted/50" : ""}
+                  >
+                    Beginner → Advanced
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("difficulty-desc")}
+                    className={sortBy === "difficulty-desc" ? "bg-muted/50" : ""}
+                  >
+                    Advanced → Beginner
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    onClick={() => setSortBy("category")}
+                    className={sortBy === "category" ? "bg-muted/50" : ""}
+                  >
+                    Category
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Filter Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-10 px-3 text-muted-foreground hover:text-foreground border-border/20 relative"
+                  >
+                    <Filter className="h-4 w-4 mr-2" />
+                    Filter
+                    {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                      <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
+                    )}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-64 bg-background border border-border/20 shadow-lg z-50">
+                  <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                  {categories.map((category) => (
+                    <DropdownMenuCheckboxItem
+                      key={category}
+                      checked={selectedCategories.includes(category)}
+                      onCheckedChange={() => handleCategoryToggle(category)}
+                      className="hover:bg-muted/50"
+                    >
+                      {category}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                  
+                  <DropdownMenuSeparator />
+                  
+                  <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
+                  {difficulties.map((difficulty) => (
+                    <DropdownMenuCheckboxItem
+                      key={difficulty}
+                      checked={selectedDifficulties.includes(difficulty)}
+                      onCheckedChange={() => handleDifficultyToggle(difficulty)}
+                      className="hover:bg-muted/50"
+                    >
+                      {difficulty}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                  
+                  <DropdownMenuSeparator />
+                  
+                  <DropdownMenuItem onClick={clearFilters} className="text-destructive hover:bg-destructive/10">
+                    Clear All Filters
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Terms List */}
-      <main className={`container mx-auto px-4 transition-all duration-300 ${isSearchBarSticky ? 'pt-24' : 'pt-12'}`}>
+      <main className={`container mx-auto px-4 transition-all duration-500 ${isSearchBarSticky ? 'pt-20' : 'pt-12'}`}>
         <Accordion type="multiple" className="max-w-4xl mx-auto space-y-4">
           {filteredTerms.map((term, index) => (
             <AccordionItem
