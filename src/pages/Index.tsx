@@ -437,7 +437,7 @@ const Index = () => {
                           onCheckedChange={() => handleCategoryToggle(category)}
                           className="hover:bg-muted/50 group"
                         >
-                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryBorderColor(category)} group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
+                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryTextColor(category)} group-hover:${getCategoryBorderColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
                             {category}
                           </span>
                         </DropdownMenuCheckboxItem>
@@ -547,7 +547,7 @@ const Index = () => {
                       onCheckedChange={() => handleCategoryToggle(category)}
                       className="hover:bg-muted/50 group"
                     >
-                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryBorderColor(category)} group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
+                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryTextColor(category)} group-hover:${getCategoryBorderColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
                         {category}
                       </span>
                     </DropdownMenuCheckboxItem>
