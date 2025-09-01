@@ -123,20 +123,16 @@ const Index = () => {
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             {/* Home Button - progressive text reveal from behind search bar */}
-            <div 
-              className="relative overflow-hidden transition-all duration-100 ease-out"
-              style={{
-                width: `${Math.max(scrollProgress * 120, scrollProgress > 0 ? 12 : 0)}px`,
-                pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
-              }}
-            >
+            <div className="relative">
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-200 hover:scale-105 absolute left-0 top-0"
+                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-100 hover:scale-105"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 style={{
-                  opacity: Math.min(scrollProgress * 2, 1)
+                  clipPath: `inset(0 ${100 - (scrollProgress * 100)}% 0 0)`,
+                  opacity: scrollProgress > 0.1 ? 1 : 0,
+                  pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
                 }}
               >
                 web3pedia
