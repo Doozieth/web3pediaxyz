@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown } from "lucide-react";
+import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
 const Index = () => {
+  const { theme, setTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -113,7 +115,17 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header with centered title */}
-      <header ref={headerRef} className="text-center pt-16 pb-5 px-4 border-b border-border/10">
+      <header ref={headerRef} className="relative text-center pt-16 pb-5 px-4 border-b border-border/10">
+        {/* Theme toggle button in top right */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="absolute top-4 right-4 h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
+        >
+          {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        </Button>
+        
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
           <span className="font-black">web3</span><span className="font-semibold">pedia</span>
         </h1>
