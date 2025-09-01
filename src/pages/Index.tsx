@@ -195,7 +195,7 @@ const Index = () => {
                         }
                         {!((term.category === 'Fundamentals' && (term.term === 'Bitcoin (BTC)' || term.term === 'Blockchain')) || 
                            (term.category === 'Technology' && term.term === 'Smart Contract')) && 
-                          `${term.definition} This concept plays a vital role in the broader cryptocurrency ecosystem and understanding its mechanics helps investors and users make more informed decisions. The practical applications of this technology continue to evolve as the industry matures and finds new use cases.`
+                          `This concept represents a fundamental building block in the decentralized finance ecosystem, with deep technical implications for how digital assets operate. Its implementation involves complex cryptographic principles and network protocols that ensure security and transparency across distributed systems. The underlying mechanisms have been refined over years of development, incorporating lessons learned from traditional financial systems while addressing their inherent limitations. As the cryptocurrency space continues to mature, this technology serves as a cornerstone for innovation in areas ranging from payment processing to asset management.`
                         }
                       </p>
                     </div>
