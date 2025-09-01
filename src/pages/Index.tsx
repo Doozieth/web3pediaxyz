@@ -164,7 +164,9 @@ const Index = () => {
                             } 
                             className="text-xs"
                           >
-                            {term.difficulty}
+                            {term.difficulty === 'Beginner' ? '●' : 
+                             term.difficulty === 'Intermediate' ? '● ●' : 
+                             '● ● ●'}
                           </Badge>
                         )}
                       </div>
