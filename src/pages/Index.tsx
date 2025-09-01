@@ -114,12 +114,12 @@ const Index = () => {
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
-            {/* Home Button - slides out from behind search bar */}
-            <div className={`transition-all duration-500 ${isSearchBarSticky ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-32 pointer-events-none'}`}>
+            {/* Home Button - smooth Stripe-like reveal animation */}
+            <div className={`transition-all duration-700 ease-out ${isSearchBarSticky ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95 pointer-events-none'}`}>
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap"
+                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-200 hover:scale-105"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 web3pedia
