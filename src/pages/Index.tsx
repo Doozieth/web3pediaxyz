@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +14,8 @@ const Index = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("default");
+  const [isSearchBarSticky, setIsSearchBarSticky] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     let filtered = cryptoTerms;
@@ -65,6 +67,18 @@ const Index = () => {
     setFilteredTerms(sorted);
   }, [searchTerm, selectedCategories, selectedDifficulties, sortBy]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const headerBottom = headerRef.current.offsetTop + headerRef.current.offsetHeight;
+        setIsSearchBarSticky(window.scrollY > headerBottom);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleCategoryToggle = (category: string) => {
     setSelectedCategories(prev => 
       prev.includes(category) 
@@ -91,13 +105,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header with centered title */}
-      <header className="text-center py-16 px-4 border-b border-border/10">
+      <header ref={headerRef} className="text-center py-16 px-4 border-b border-border/10">
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">web3pedia</h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
-        
-        {/* Search Bar with Filter */}
-        <div className="max-w-2xl mx-auto relative">{/* matches description width */}
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
+      </header>
+
+      {/* Sticky Search Bar */}
+      <div className={`transition-all duration-300 ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
+        <div className="max-w-2xl mx-auto relative px-4 py-4">
+          <Search className="absolute left-8 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
           <Input
             type="text"
             placeholder="Search crypto terms"
@@ -107,7 +123,7 @@ const Index = () => {
           />
            
           {/* Sort and Filter Icons inside search bar */}
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1">
+          <div className="absolute right-7 top-1/2 transform -translate-y-1/2 flex gap-1">
             {/* Sort Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -210,10 +226,10 @@ const Index = () => {
             </DropdownMenu>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Terms List */}
-      <main className="container mx-auto px-4 py-12">
+      <main className={`container mx-auto px-4 transition-all duration-300 ${isSearchBarSticky ? 'pt-24' : 'pt-12'}`}>
         <Accordion type="multiple" className="max-w-4xl mx-auto space-y-4">
           {filteredTerms.map((term, index) => (
             <AccordionItem
