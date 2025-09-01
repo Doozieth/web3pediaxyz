@@ -15,6 +15,7 @@ const Index = () => {
   const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("default");
   const [isSearchBarSticky, setIsSearchBarSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -66,6 +67,15 @@ const Index = () => {
       filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
     }
     
+    // Filter by tags
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(term => 
+        term.tags && selectedTags.some(selectedTag => 
+          term.tags.some(tag => tag.toLowerCase().includes(selectedTag.toLowerCase()))
+        )
+      );
+    }
+    
     // Apply sorting
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
@@ -91,7 +101,7 @@ const Index = () => {
     });
     
     setFilteredTerms(sorted);
-  }, [searchTerm, selectedCategories, selectedDifficulties, sortBy]);
+  }, [searchTerm, selectedCategories, selectedDifficulties, selectedTags, sortBy]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -128,9 +138,18 @@ const Index = () => {
     );
   };
 
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
   const clearFilters = () => {
     setSelectedCategories([]);
     setSelectedDifficulties([]);
+    setSelectedTags([]);
   };
 
   const totalTerms = cryptoTerms.length;
@@ -312,7 +331,7 @@ const Index = () => {
                         className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
                       >
                         <Filter className="h-5 w-5" />
-                        {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                        {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
                           <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
                         )}
                       </Button>
@@ -418,7 +437,7 @@ const Index = () => {
                     className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground border-border/20 relative"
                   >
                     <Filter className="h-4 w-4" />
-                    {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                    {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
                       <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
                     )}
                   </Button>
@@ -539,8 +558,7 @@ const Index = () => {
                             className="text-xs px-2 py-0.5 bg-muted/20 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation();
-                              setSearchTerm(tag);
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                              handleTagToggle(tag);
                             }}
                           >
                             {tag}
