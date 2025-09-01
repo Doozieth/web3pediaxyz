@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
 const Index = () => {
@@ -133,59 +134,107 @@ const Index = () => {
 
       {/* Terms List */}
       <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto space-y-4">
+        <Accordion type="multiple" className="max-w-4xl mx-auto space-y-4">
           {filteredTerms.map((term, index) => (
-            <Card
+            <AccordionItem
               key={term.id}
-              className="hover:shadow-lg transition-all duration-300 cursor-pointer border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 rounded-xl"
-              style={{
-                animationDelay: `${index * 0.02}s`,
-              }}
+              value={term.id}
+              className="border-none"
             >
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between mb-2">
-                  <CardTitle className="text-lg text-foreground font-semibold">{term.term}</CardTitle>
-                  <div className="flex gap-2 ml-4">
-                    <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
-                      {term.category}
-                    </Badge>
-                    {term.difficulty && (
-                      <Badge 
-                        variant={
-                          term.difficulty === 'Beginner' ? 'default' : 
-                          term.difficulty === 'Intermediate' ? 'secondary' : 
-                          'destructive'
-                        } 
-                        className="text-xs"
-                      >
-                        {term.difficulty}
-                      </Badge>
+              <Card
+                className="hover:shadow-lg transition-all duration-300 border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 rounded-xl"
+                style={{
+                  animationDelay: `${index * 0.02}s`,
+                }}
+              >
+                <AccordionTrigger className="hover:no-underline p-0">
+                  <CardHeader className="pb-3 w-full">
+                    <div className="flex items-start justify-between mb-2">
+                      <CardTitle className="text-lg text-foreground font-semibold text-left">{term.term}</CardTitle>
+                      <div className="flex gap-2 ml-4">
+                        <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                          {term.category}
+                        </Badge>
+                        {term.difficulty && (
+                          <Badge 
+                            variant={
+                              term.difficulty === 'Beginner' ? 'default' : 
+                              term.difficulty === 'Intermediate' ? 'secondary' : 
+                              'destructive'
+                            } 
+                            className="text-xs"
+                          >
+                            {term.difficulty}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left">
+                      {term.definition}
+                    </p>
+                  </CardHeader>
+                </AccordionTrigger>
+                
+                <AccordionContent className="pb-0">
+                  <CardContent className="pt-0 space-y-6">
+                    {/* Use Cases */}
+                    {term.examples && term.examples.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                          <BookOpen className="h-4 w-4 text-primary" />
+                          Examples & Use Cases
+                        </h4>
+                        <ul className="space-y-2">
+                          {term.examples.map((example, idx) => (
+                            <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                              <span className="text-primary mt-1.5 text-xs">•</span>
+                              <span>{example}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                  {term.definition}
-                </p>
-                {term.tags && term.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1">
-                    {term.tags.slice(0, 5).map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs px-2 py-0.5 bg-muted/30 text-muted-foreground border-muted">
-                        {tag}
-                      </Badge>
-                    ))}
-                    {term.tags.length > 5 && (
-                      <Badge variant="outline" className="text-xs px-2 py-0.5 bg-muted/30 text-muted-foreground border-muted">
-                        +{term.tags.length - 5} more
-                      </Badge>
+                    
+                    {/* Related Terms/Tags */}
+                    {term.tags && term.tags.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                          <Globe className="h-4 w-4 text-primary" />
+                          Related Terms
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {term.tags.map((tag) => (
+                            <Badge 
+                              key={tag} 
+                              variant="outline" 
+                              className="text-xs px-3 py-1.5 bg-muted/30 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
                     )}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                    
+                    {/* Additional Context */}
+                    <div className="pt-2 border-t border-border/10">
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <TrendingUp className="h-3 w-3" />
+                          Difficulty: {term.difficulty || 'Not specified'}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Users className="h-3 w-3" />
+                          Category: {term.category}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </AccordionContent>
+              </Card>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
 
         {filteredTerms.length === 0 && searchTerm && (
           <div className="text-center py-16">
