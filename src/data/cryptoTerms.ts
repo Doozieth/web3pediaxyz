@@ -729,6 +729,376 @@ export const cryptoTerms: CryptoTerm[] = [
     difficulty: 'Advanced',
     tags: ['lending', 'rewards', 'DeFi'],
     examples: ['Compound farming', 'Uniswap LP tokens', 'Liquidity mining programs']
+  },
+  
+  // Additional Terms for 1000+ collection
+  {
+    id: 'zero-knowledge-proof',
+    term: 'Zero-Knowledge Proof',
+    definition: 'A cryptographic method that allows one party to prove to another that they know a specific piece of information without revealing the information itself.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['cryptography', 'privacy', 'verification']
+  },
+  {
+    id: 'zk-rollup',
+    term: 'ZK-Rollup',
+    definition: 'A layer 2 scaling solution that bundles hundreds of transfers off-chain and generates a cryptographic proof.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['scaling', 'layer2', 'rollup']
+  },
+  {
+    id: 'arbitrage',
+    term: 'Arbitrage',
+    definition: 'The practice of buying and selling identical assets in different markets to profit from price differences.',
+    category: 'Trading',
+    difficulty: 'Intermediate',
+    tags: ['trading', 'profit', 'price difference']
+  },
+  {
+    id: 'automated-market-maker',
+    term: 'Automated Market Maker (AMM)',
+    definition: 'A decentralized exchange protocol that relies on algorithmic trading to provide liquidity for traders.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['DEX', 'liquidity', 'algorithm']
+  },
+  {
+    id: 'block-explorer',
+    term: 'Block Explorer',
+    definition: 'A web application that allows users to search and navigate blockchain data including transactions, addresses, and blocks.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['blockchain', 'search', 'data']
+  },
+  {
+    id: 'cold-storage',
+    term: 'Cold Storage',
+    definition: 'A method of storing cryptocurrency offline to protect it from cyber attacks and unauthorized access.',
+    category: 'Security',
+    difficulty: 'Beginner',
+    tags: ['storage', 'security', 'offline']
+  },
+  {
+    id: 'consensus-mechanism',
+    term: 'Consensus Mechanism',
+    definition: 'A protocol used to achieve agreement among distributed network nodes about the validity of transactions.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['consensus', 'network', 'validation']
+  },
+  {
+    id: 'cross-chain',
+    term: 'Cross-Chain',
+    definition: 'Technology that enables the transfer of assets and data between different blockchain networks.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['interoperability', 'bridges', 'networks']
+  },
+  {
+    id: 'dao-governance',
+    term: 'DAO Governance',
+    definition: 'The process by which DAO members propose, debate, and vote on decisions affecting the organization.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['governance', 'voting', 'decentralized']
+  },
+  {
+    id: 'diamond-hands',
+    term: 'Diamond Hands',
+    definition: 'A term describing investors who hold onto their cryptocurrency investments despite market volatility.',
+    category: 'Culture',
+    difficulty: 'Beginner',
+    tags: ['holding', 'patience', 'diamond']
+  },
+  {
+    id: 'eip',
+    term: 'EIP (Ethereum Improvement Proposal)',
+    definition: 'A design document providing information to the Ethereum community or describing new features for Ethereum.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['ethereum', 'improvement', 'proposal']
+  },
+  {
+    id: 'flash-loan',
+    term: 'Flash Loan',
+    definition: 'An uncollateralized loan that must be borrowed and repaid within the same transaction block.',
+    category: 'DeFi',
+    difficulty: 'Advanced',
+    tags: ['lending', 'instant', 'uncollateralized']
+  },
+  {
+    id: 'gas-limit',
+    term: 'Gas Limit',
+    definition: 'The maximum amount of gas units a user is willing to spend on a transaction.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['ethereum', 'transaction', 'limit']
+  },
+  {
+    id: 'hash-rate',
+    term: 'Hash Rate',
+    definition: 'The speed at which a computer can complete an operation in the Bitcoin blockchain.',
+    category: 'Mining',
+    difficulty: 'Intermediate',
+    tags: ['mining', 'speed', 'computation']
+  },
+  {
+    id: 'immutable',
+    term: 'Immutable',
+    definition: 'A characteristic of blockchain data that cannot be changed or altered once recorded.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['unchangeable', 'permanent', 'blockchain']
+  },
+  {
+    id: 'impermanent-loss',
+    term: 'Impermanent Loss',
+    definition: 'The temporary loss of funds experienced by liquidity providers due to volatility in a trading pair.',
+    category: 'DeFi',
+    difficulty: 'Advanced',
+    tags: ['liquidity', 'loss', 'volatility']
+  },
+  {
+    id: 'layer-1',
+    term: 'Layer 1',
+    definition: 'The base blockchain architecture that validates and finalizes transactions.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['blockchain', 'base layer', 'architecture']
+  },
+  {
+    id: 'layer-2',
+    term: 'Layer 2',
+    definition: 'Secondary frameworks built on top of existing blockchains to improve scalability and reduce costs.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['scaling', 'secondary', 'framework']
+  },
+  {
+    id: 'lightning-network',
+    term: 'Lightning Network',
+    definition: 'A layer 2 payment protocol designed to enable fast and cheap Bitcoin transactions.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['bitcoin', 'payment', 'fast']
+  },
+  {
+    id: 'liquidity-pool',
+    term: 'Liquidity Pool',
+    definition: 'A collection of funds locked in a smart contract to facilitate decentralized trading and lending.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['funds', 'trading', 'smart contract']
+  },
+  {
+    id: 'mainnet',
+    term: 'Mainnet',
+    definition: 'The primary network where actual cryptocurrency transactions take place and have real economic value.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['network', 'production', 'live']
+  },
+  {
+    id: 'merkle-tree',
+    term: 'Merkle Tree',
+    definition: 'A tree structure of cryptographic hashes used to efficiently verify large data structures.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['data structure', 'verification', 'hashes']
+  },
+  {
+    id: 'multi-signature',
+    term: 'Multi-Signature (Multisig)',
+    definition: 'A digital signature scheme that requires multiple private keys to authorize a transaction.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['security', 'multiple keys', 'authorization']
+  },
+  {
+    id: 'node',
+    term: 'Node',
+    definition: 'A computer that participates in the blockchain network by maintaining a copy of the distributed ledger.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['computer', 'network', 'ledger']
+  },
+  {
+    id: 'oracle',
+    term: 'Oracle',
+    definition: 'A service that provides real-world data to blockchain smart contracts.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['data', 'smart contracts', 'external']
+  },
+  {
+    id: 'paper-hands',
+    term: 'Paper Hands',
+    definition: 'A term describing investors who sell their cryptocurrency quickly when prices become volatile.',
+    category: 'Culture',
+    difficulty: 'Beginner',
+    tags: ['selling', 'volatility', 'weak']
+  },
+  {
+    id: 'peer-to-peer',
+    term: 'Peer-to-Peer (P2P)',
+    definition: 'A decentralized interaction between parties in a distributed network without intermediaries.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['decentralized', 'direct', 'network']
+  },
+  {
+    id: 'proof-of-history',
+    term: 'Proof of History',
+    definition: 'A consensus algorithm that creates a historical record proving events occurred at specific moments in time.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['consensus', 'time', 'history']
+  },
+  {
+    id: 'public-key',
+    term: 'Public Key',
+    definition: 'A cryptographic key that can be shared openly and is used to verify digital signatures.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['cryptography', 'verification', 'public']
+  },
+  {
+    id: 'private-key',
+    term: 'Private Key',
+    definition: 'A secret cryptographic key that must be kept confidential and is used to sign transactions.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['cryptography', 'secret', 'signing']
+  },
+  {
+    id: 'pump-and-dump',
+    term: 'Pump and Dump',
+    definition: 'A fraudulent scheme involving artificially inflating asset prices before selling at the peak.',
+    category: 'Trading',
+    difficulty: 'Beginner',
+    tags: ['fraud', 'manipulation', 'scheme']
+  },
+  {
+    id: 'rug-pull',
+    term: 'Rug Pull',
+    definition: 'A malicious exit scam where developers abandon a project and steal investors\' funds.',
+    category: 'Security',
+    difficulty: 'Beginner',
+    tags: ['scam', 'exit', 'theft']
+  },
+  {
+    id: 'seed-phrase',
+    term: 'Seed Phrase',
+    definition: 'A series of words used to recover a cryptocurrency wallet and its associated private keys.',
+    category: 'Security',
+    difficulty: 'Beginner',
+    tags: ['recovery', 'backup', 'words']
+  },
+  {
+    id: 'sharding',
+    term: 'Sharding',
+    definition: 'A scaling technique that splits a blockchain network into smaller, parallel chains called shards.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['scaling', 'parallel', 'splitting']
+  },
+  {
+    id: 'sidechain',
+    term: 'Sidechain',
+    definition: 'A separate blockchain that runs parallel to the main blockchain and is connected via a two-way bridge.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['parallel', 'bridge', 'separate']
+  },
+  {
+    id: 'slippage',
+    term: 'Slippage',
+    definition: 'The difference between expected and actual transaction prices due to market movement during execution.',
+    category: 'Trading',
+    difficulty: 'Intermediate',
+    tags: ['price difference', 'execution', 'market']
+  },
+  {
+    id: 'smart-contract',
+    term: 'Smart Contract',
+    definition: 'Self-executing contracts with terms directly written into code and automatically enforced.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['automated', 'code', 'contract']
+  },
+  {
+    id: 'solidity',
+    term: 'Solidity',
+    definition: 'A programming language designed for developing smart contracts on the Ethereum blockchain.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['programming', 'ethereum', 'development']
+  },
+  {
+    id: 'stablecoin',
+    term: 'Stablecoin',
+    definition: 'A cryptocurrency designed to maintain a stable value relative to a reference asset like USD.',
+    category: 'Fundamentals',
+    difficulty: 'Beginner',
+    tags: ['stable', 'pegged', 'reference']
+  },
+  {
+    id: 'testnet',
+    term: 'Testnet',
+    definition: 'A separate blockchain network used for testing and development without real economic value.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['testing', 'development', 'sandbox']
+  },
+  {
+    id: 'tokenomics',
+    term: 'Tokenomics',
+    definition: 'The economic model and structure surrounding a cryptocurrency token, including supply and distribution.',
+    category: 'Fundamentals',
+    difficulty: 'Intermediate',
+    tags: ['economics', 'supply', 'distribution']
+  },
+  {
+    id: 'total-value-locked',
+    term: 'Total Value Locked (TVL)',
+    definition: 'The total amount of assets deposited in a DeFi protocol or platform.',
+    category: 'DeFi',
+    difficulty: 'Intermediate',
+    tags: ['deposits', 'protocol', 'metrics']
+  },
+  {
+    id: 'validator',
+    term: 'Validator',
+    definition: 'A network participant responsible for verifying transactions and maintaining blockchain security.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['verification', 'security', 'participant']
+  },
+  {
+    id: 'vesting',
+    term: 'Vesting',
+    definition: 'A mechanism that releases tokens to holders gradually over time rather than all at once.',
+    category: 'Fundamentals',
+    difficulty: 'Intermediate',
+    tags: ['gradual release', 'time-locked', 'distribution']
+  },
+  {
+    id: 'web3',
+    term: 'Web3',
+    definition: 'The next generation of the internet built on blockchain technology, emphasizing decentralization.',
+    category: 'Technology',
+    difficulty: 'Beginner',
+    tags: ['internet', 'decentralized', 'blockchain']
+  },
+  {
+    id: 'wrapped-token',
+    term: 'Wrapped Token',
+    definition: 'A tokenized version of another cryptocurrency that can be used on different blockchains.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['tokenized', 'cross-chain', 'representation']
   }
 ];
 
