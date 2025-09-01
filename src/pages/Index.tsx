@@ -583,7 +583,7 @@ const Index = () => {
                         <div className="flex gap-2">
                           <Badge 
                             variant="outline" 
-                            className={`text-xs cursor-pointer transition-all hover:scale-105 bg-transparent ${getCategoryColor(term.category)}`}
+                            className={`text-xs cursor-pointer transition-all hover:scale-105 bg-transparent border-transparent ${getCategoryColor(term.category)}`}
                             onClick={(e) => {
                               e.stopPropagation();
                               handleCategoryToggle(term.category);
