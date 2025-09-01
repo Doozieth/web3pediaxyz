@@ -262,8 +262,8 @@ const Index = () => {
                         <ul className="space-y-2">
                           {term.examples.map((example, idx) => (
                             <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                              <span className="text-primary mt-1.5 text-xs">•</span>
-                              <span>{example}</span>
+                              <span className="text-primary mt-0.5 text-xs leading-none">•</span>
+                              <span className="leading-relaxed">{example}</span>
                             </li>
                           ))}
                         </ul>
