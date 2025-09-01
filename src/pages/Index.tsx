@@ -9,6 +9,29 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { allCryptoTerms as cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
+// Category color mapping
+const getCategoryColor = (category: string) => {
+  const colorMap: Record<string, string> = {
+    'Fundamentals': 'bg-blue-100 text-blue-800 border-blue-200 hover:bg-blue-200',
+    'Technology': 'bg-purple-100 text-purple-800 border-purple-200 hover:bg-purple-200',
+    'Trading': 'bg-green-100 text-green-800 border-green-200 hover:bg-green-200',
+    'DeFi': 'bg-indigo-100 text-indigo-800 border-indigo-200 hover:bg-indigo-200',
+    'NFTs': 'bg-pink-100 text-pink-800 border-pink-200 hover:bg-pink-200',
+    'Mining': 'bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-200',
+    'Security': 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200',
+    'Psychology': 'bg-amber-100 text-amber-800 border-amber-200 hover:bg-amber-200',
+    'Culture': 'bg-cyan-100 text-cyan-800 border-cyan-200 hover:bg-cyan-200',
+    'Economics': 'bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-200',
+    'Gaming': 'bg-violet-100 text-violet-800 border-violet-200 hover:bg-violet-200',
+    'Social': 'bg-rose-100 text-rose-800 border-rose-200 hover:bg-rose-200',
+    'Identity': 'bg-teal-100 text-teal-800 border-teal-200 hover:bg-teal-200',
+    'Tokenization': 'bg-lime-100 text-lime-800 border-lime-200 hover:bg-lime-200',
+    'Fundraising': 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200 hover:bg-fuchsia-200',
+    'Blockchain': 'bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-200'
+  };
+  return colorMap[category] || 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200';
+};
+
 const Index = () => {
   const { theme, setTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
@@ -346,7 +369,10 @@ const Index = () => {
                           onCheckedChange={() => handleCategoryToggle(category)}
                           className="hover:bg-muted/50"
                         >
-                          {category}
+                          <div className="flex items-center gap-2">
+                            <div className={`w-3 h-3 rounded-sm ${getCategoryColor(category).split(' ')[0]} border`}></div>
+                            {category}
+                          </div>
                         </DropdownMenuCheckboxItem>
                       ))}
                       
@@ -452,7 +478,10 @@ const Index = () => {
                       onCheckedChange={() => handleCategoryToggle(category)}
                       className="hover:bg-muted/50"
                     >
-                      {category}
+                      <div className="flex items-center gap-2">
+                        <div className={`w-3 h-3 rounded-sm ${getCategoryColor(category).split(' ')[0]} border`}></div>
+                        {category}
+                      </div>
                     </DropdownMenuCheckboxItem>
                   ))}
                   
@@ -508,7 +537,7 @@ const Index = () => {
                       <CardTitle className="text-lg text-foreground font-semibold text-left">{term.term}</CardTitle>
                       <div className="flex items-center gap-3 ml-4">
                         <div className="flex gap-2">
-                          <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                          <Badge variant="outline" className={`text-xs ${getCategoryColor(term.category)}`}>
                             {term.category}
                           </Badge>
                           {term.difficulty && (
