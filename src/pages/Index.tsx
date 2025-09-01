@@ -177,6 +177,17 @@ const Index = () => {
                 
                 <AccordionContent className="pb-0">
                   <CardContent className="pt-0 space-y-6">
+                    {/* Detailed Description */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                        <BookOpen className="h-4 w-4 text-primary" />
+                        Detailed Description
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {term.definition}
+                      </p>
+                    </div>
+
                     {/* Use Cases */}
                     {term.examples && term.examples.length > 0 && (
                       <div>
