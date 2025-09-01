@@ -367,9 +367,11 @@ const Index = () => {
                           key={category}
                           checked={selectedCategories.includes(category)}
                           onCheckedChange={() => handleCategoryToggle(category)}
-                          className="hover:bg-muted/50"
+                          className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : ''}`}
                         >
-                          <span className={getCategoryColor(category).split(' ')[1]}>{category}</span>
+                          <span className={`group-hover:${getCategoryColor(category).split(' ')[1]} ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : 'text-foreground'}`}>
+                            {category}
+                          </span>
                         </DropdownMenuCheckboxItem>
                       ))}
                       
@@ -473,9 +475,11 @@ const Index = () => {
                       key={category}
                       checked={selectedCategories.includes(category)}
                       onCheckedChange={() => handleCategoryToggle(category)}
-                      className="hover:bg-muted/50"
+                      className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : ''}`}
                     >
-                      <span className={getCategoryColor(category).split(' ')[1]}>{category}</span>
+                      <span className={`group-hover:${getCategoryColor(category).split(' ')[1]} ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : 'text-foreground'}`}>
+                        {category}
+                      </span>
                     </DropdownMenuCheckboxItem>
                   ))}
                   
