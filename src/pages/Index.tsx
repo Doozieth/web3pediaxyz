@@ -147,34 +147,32 @@ const Index = () => {
                   animationDelay: `${index * 0.02}s`,
                 }}
               >
-                <AccordionTrigger className="hover:no-underline p-6 w-full">
-                  <div className="flex items-start justify-between w-full">
-                    <div className="flex-1 text-left">
-                      <div className="flex items-start justify-between mb-2">
-                        <CardTitle className="text-lg text-foreground font-semibold">{term.term}</CardTitle>
-                        <div className="flex gap-2 ml-4">
-                          <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
-                            {term.category}
+                <AccordionTrigger className="hover:no-underline p-0">
+                  <CardHeader className="pb-3 w-full">
+                    <div className="flex items-start justify-between mb-2">
+                      <CardTitle className="text-lg text-foreground font-semibold text-left">{term.term}</CardTitle>
+                      <div className="flex gap-2 ml-4">
+                        <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                          {term.category}
+                        </Badge>
+                        {term.difficulty && (
+                          <Badge 
+                            variant={
+                              term.difficulty === 'Beginner' ? 'default' : 
+                              term.difficulty === 'Intermediate' ? 'secondary' : 
+                              'destructive'
+                            } 
+                            className="text-xs"
+                          >
+                            {term.difficulty}
                           </Badge>
-                          {term.difficulty && (
-                            <Badge 
-                              variant={
-                                term.difficulty === 'Beginner' ? 'default' : 
-                                term.difficulty === 'Intermediate' ? 'secondary' : 
-                                'destructive'
-                              } 
-                              className="text-xs"
-                            >
-                              {term.difficulty}
-                            </Badge>
-                          )}
-                        </div>
+                        )}
                       </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {term.definition}
-                      </p>
                     </div>
-                  </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left">
+                      {term.definition}
+                    </p>
+                  </CardHeader>
                 </AccordionTrigger>
                 
                 <AccordionContent className="pb-0">
