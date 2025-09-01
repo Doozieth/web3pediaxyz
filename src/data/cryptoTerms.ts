@@ -443,15 +443,6 @@ export const cryptoTerms: CryptoTerm[] = [
     examples: ['Mobile wallet apps', 'Exchange wallets', 'Desktop wallet software']
   },
   {
-    id: 'ico',
-    term: 'Initial Coin Offering (ICO)',
-    definition: 'A fundraising method where new projects sell their underlying crypto tokens in exchange for Bitcoin or Ethereum.',
-    category: 'Fundraising',
-    difficulty: 'Intermediate',
-    tags: ['fundraising', 'tokens', 'investment'],
-    examples: ['Ethereum ICO in 2014', 'EOS ICO', '2017 ICO boom']
-  },
-  {
     id: 'immutable',
     term: 'Immutable',
     definition: 'Unable to be changed or modified. In blockchain context, refers to the permanent nature of recorded transactions.',
@@ -747,14 +738,6 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Technology',
     difficulty: 'Advanced',
     tags: ['scaling', 'layer2', 'rollup']
-  },
-  {
-    id: 'arbitrage',
-    term: 'Arbitrage',
-    definition: 'The practice of buying and selling identical assets in different markets to profit from price differences.',
-    category: 'Trading',
-    difficulty: 'Intermediate',
-    tags: ['trading', 'profit', 'price difference']
   },
   {
     id: 'automated-market-maker',
@@ -2046,15 +2029,6 @@ export const v0WebsiteTerms: CryptoTerm[] = [
     examples: ['Decentraland', 'The Sandbox', 'Axie Infinity']
   },
   {
-    id: 'gamefi',
-    term: 'GameFi',
-    definition: 'The intersection of gaming and decentralized finance, where players can earn cryptocurrency through gameplay.',
-    category: 'Gaming',
-    difficulty: 'Intermediate',
-    tags: ['gaming', 'play-to-earn', 'defi'],
-    examples: ['Axie Infinity', 'Splinterlands', 'Gods Unchained']
-  },
-  {
     id: 'cross-chain',
     term: 'Cross-chain',
     definition: 'Technology that enables interoperability between different blockchain networks.',
@@ -2107,15 +2081,6 @@ export const v0WebsiteTerms: CryptoTerm[] = [
     difficulty: 'Advanced',
     tags: ['liquidity', 'amm', 'risk'],
     examples: ['Uniswap liquidity provision', 'AMM pool participation', 'Yield farming risks']
-  },
-  {
-    id: 'arbitrage',
-    term: 'Arbitrage',
-    definition: 'The practice of buying and selling identical assets in different markets to profit from price differences.',
-    category: 'Trading',
-    difficulty: 'Intermediate',
-    tags: ['trading', 'price-efficiency', 'profit'],
-    examples: ['Exchange arbitrage', 'DEX-CEX arbitrage', 'Triangular arbitrage']
   },
   {
     id: 'ico',
