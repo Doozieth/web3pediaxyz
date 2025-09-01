@@ -429,9 +429,11 @@ const Index = () => {
                           key={difficulty}
                           checked={selectedDifficulties.includes(difficulty)}
                           onCheckedChange={() => handleDifficultyToggle(difficulty)}
-                          className="hover:bg-muted/50"
+                          className={`hover:bg-muted/50 ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}
                         >
-                          {difficulty}
+                          <span className={`hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}>
+                            {difficulty}
+                          </span>
                         </DropdownMenuCheckboxItem>
                       ))}
                       
@@ -537,9 +539,11 @@ const Index = () => {
                       key={difficulty}
                       checked={selectedDifficulties.includes(difficulty)}
                       onCheckedChange={() => handleDifficultyToggle(difficulty)}
-                      className="hover:bg-muted/50"
+                      className={`hover:bg-muted/50 ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}
                     >
-                      {difficulty}
+                      <span className={`hover:text-primary ${selectedDifficulties.includes(difficulty) ? 'text-primary' : 'text-foreground'}`}>
+                        {difficulty}
+                      </span>
                     </DropdownMenuCheckboxItem>
                   ))}
                   
