@@ -5,14 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, BookOpen, Search, Star, TrendingUp } from "lucide-react";
 import { cryptoTerms, categories } from "@/data/cryptoTerms";
 import { useNavigate } from "react-router-dom";
-
 const Index = () => {
   const navigate = useNavigate();
   const featuredTerms = cryptoTerms.slice(0, 6);
   const totalTerms = cryptoTerms.length;
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -25,9 +22,7 @@ const Index = () => {
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Master the
-            <span className="block bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent">
-              Crypto Language
-            </span>
+            
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -36,21 +31,11 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="text-lg px-8 py-6"
-              onClick={() => navigate('/glossary')}
-            >
+            <Button variant="hero" size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/glossary')}>
               Explore Glossary
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20"
-              onClick={() => navigate('/glossary')}
-            >
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20" onClick={() => navigate('/glossary')}>
               <Search className="mr-2 h-5 w-5" />
               Search Terms
             </Button>
@@ -94,12 +79,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredTerms.map((term) => (
-              <Card 
-                key={term.id} 
-                className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 group cursor-pointer"
-                onClick={() => navigate(`/term/${term.id}`)}
-              >
+            {featuredTerms.map(term => <Card key={term.id} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 group cursor-pointer" onClick={() => navigate(`/term/${term.id}`)}>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg group-hover:text-primary transition-colors flex items-center">
                     <BookOpen className="h-5 w-5 mr-2 text-primary" />
@@ -118,25 +98,16 @@ const Index = () => {
                     </Badge>
                   </div>
                   
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full group-hover:bg-primary group-hover:text-white transition-all"
-                  >
+                  <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-white transition-all">
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           
           <div className="text-center">
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => navigate('/glossary')}
-            >
+            <Button variant="outline" size="lg" onClick={() => navigate('/glossary')}>
               View All {totalTerms} Terms
             </Button>
           </div>
@@ -154,12 +125,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.filter(cat => cat !== 'All').map((category) => (
-              <Card 
-                key={category}
-                className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 cursor-pointer group"
-                onClick={() => navigate('/glossary')}
-              >
+            {categories.filter(cat => cat !== 'All').map(category => <Card key={category} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 cursor-pointer group" onClick={() => navigate('/glossary')}>
                 <CardContent className="p-6 text-center">
                   <h3 className="font-semibold group-hover:text-primary transition-colors">
                     {category}
@@ -168,8 +134,7 @@ const Index = () => {
                     {cryptoTerms.filter(term => term.category === category).length} terms
                   </p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -180,11 +145,7 @@ const Index = () => {
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Join thousands who have expanded their crypto knowledge with our comprehensive glossary.
           </p>
-          <Button 
-            variant="premium" 
-            size="lg"
-            onClick={() => navigate('/glossary')}
-          >
+          <Button variant="premium" size="lg" onClick={() => navigate('/glossary')}>
             Start Learning Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -193,8 +154,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
