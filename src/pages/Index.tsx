@@ -184,19 +184,71 @@ const Index = () => {
                         Detailed Description
                       </h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        {term.category === 'Fundamentals' && term.term === 'Bitcoin (BTC)' && 
-                          "Bitcoin works without banks or governments controlling it. Miners use powerful computers to secure the network and earn rewards. Only 21 million bitcoins will ever exist, which many people believe makes it valuable over time. Today, people use Bitcoin both for payments and as an investment like digital gold."
-                        }
-                        {term.category === 'Fundamentals' && term.term === 'Blockchain' && 
-                          "Think of blockchain like a digital ledger that everyone can see but no one can cheat. Each page (block) is connected to the previous one, making it impossible to change old records. This technology goes beyond money - it can track products, secure votes, and verify identities. The best part is that no single company or person controls it."
-                        }
-                        {term.category === 'Technology' && term.term === 'Smart Contract' && 
-                          "Smart contracts are like vending machines - put in the right conditions, get the expected result, no human needed. They live on blockchains like Ethereum and can't be changed once created. These automated agreements power most modern crypto applications, from lending money to trading tokens. They've made it possible to recreate traditional banking services in a decentralized way."
-                        }
-                        {!((term.category === 'Fundamentals' && (term.term === 'Bitcoin (BTC)' || term.term === 'Blockchain')) || 
-                           (term.category === 'Technology' && term.term === 'Smart Contract')) && 
-                          `This is an important piece of the crypto puzzle that works behind the scenes to make digital money possible. It uses math and computer science to solve problems that traditional money systems face. Many crypto projects build on this idea to create new ways of handling money and data. Understanding this helps you see how the crypto world fits together.`
-                        }
+                        {(() => {
+                          const getDetailedDescription = (term: any) => {
+                            switch (term.id) {
+                              case 'bitcoin':
+                                return "Bitcoin works without banks or governments controlling it. Miners use powerful computers to secure the network and earn rewards. Only 21 million bitcoins will ever exist, which many people believe makes it valuable over time. Today, people use Bitcoin both for payments and as an investment like digital gold.";
+                              case 'blockchain':
+                                return "Think of blockchain like a digital ledger that everyone can see but no one can cheat. Each page (block) is connected to the previous one, making it impossible to change old records. This technology goes beyond money - it can track products, secure votes, and verify identities. The best part is that no single company or person controls it.";
+                              case 'smart-contract':
+                                return "Smart contracts are like vending machines - put in the right conditions, get the expected result, no human needed. They live on blockchains like Ethereum and can't be changed once created. These automated agreements power most modern crypto applications, from lending money to trading tokens. They've made it possible to recreate traditional banking services in a decentralized way.";
+                              case 'ethereum':
+                                return "Ethereum is like a global computer that anyone can use to run applications. Unlike Bitcoin which mainly handles payments, Ethereum can run complex programs called smart contracts. This flexibility has made it the foundation for most DeFi apps, NFT marketplaces, and crypto games. Think of it as the App Store for decentralized applications.";
+                              case 'defi':
+                                return "DeFi recreates traditional banking services using blockchain technology instead of banks. You can lend money, borrow funds, trade assets, and earn interest - all without filling out paperwork or getting approval from a bank. Smart contracts handle everything automatically, making financial services available 24/7 to anyone with an internet connection.";
+                              case 'nft':
+                                return "NFTs are like digital certificates of ownership for unique items. Just like you might own an original painting, an NFT proves you own a specific digital artwork, game item, or collectible. The blockchain keeps a permanent record of who owns what, making it impossible to fake or duplicate ownership.";
+                              case 'mining':
+                                return "Mining is like a global lottery where computers compete to solve math puzzles. The winner gets to add new transactions to the blockchain and earns cryptocurrency as a reward. This process keeps the network secure because cheating would require more computing power than the rest of the network combined.";
+                              case 'wallet':
+                                return "A crypto wallet is like a digital bank account, but you control it completely. It stores your private keys (like passwords) that let you send and receive cryptocurrency. Unlike bank accounts, wallets don't hold your actual coins - they just give you access to your money that lives on the blockchain.";
+                              case 'gas':
+                                return "Gas is like paying for postage when sending a letter, but for blockchain transactions. When the network is busy, gas prices go up because space in blocks is limited. You can pay higher gas to get your transaction processed faster, or wait longer with lower gas fees.";
+                              case 'hodl':
+                                return "HODL started as a typo but became a philosophy. Instead of trying to time the market by buying and selling, HODLers buy cryptocurrency and hold it for years. The idea is that crypto will be worth much more in the future, so short-term price swings don't matter.";
+                              case 'staking':
+                                return "Staking is like earning interest at a bank, but instead of lending money to the bank, you're helping secure a blockchain network. You lock up your cryptocurrency for a period of time, and in return, you earn rewards. It's a way to make passive income while supporting the network.";
+                              case 'dao':
+                                return "A DAO is like a company where everyone who owns tokens gets to vote on decisions. There's no CEO or board of directors - instead, the community decides how to spend money, what features to build, and how the organization should operate. All the rules are written in smart contracts.";
+                              case 'layer2':
+                                return "Layer 2 solutions are like express lanes on a highway. When the main blockchain gets congested and expensive, Layer 2 networks process transactions faster and cheaper. They periodically update the main blockchain with batches of transactions, combining the speed of centralized systems with blockchain security.";
+                              case 'yield-farming':
+                                return "Yield farming is like being a banker in the DeFi world. You lend your cryptocurrency to others through smart contracts and earn interest plus bonus tokens. Farmers often move their money between different protocols to chase the highest returns, though this comes with risks.";
+                              case 'fork':
+                                return "A fork is like updating the rules of a game that everyone is playing. Sometimes updates are optional (soft fork), and sometimes they create a completely new version (hard fork). When communities disagree about changes, a hard fork can split the blockchain into two separate networks.";
+                              case 'consensus':
+                                return "Consensus is how thousands of computers around the world agree on what transactions are valid without having a central authority. Different blockchains use different methods - some use mining (proof of work), others use staking (proof of stake). The goal is always to prevent cheating while keeping the network decentralized.";
+                              case 'dapp':
+                                return "DApps are applications that run on blockchain networks instead of company servers. This means no single company can shut them down or change the rules. Popular DApps include decentralized exchanges, lending platforms, and games where you truly own your in-game items.";
+                              case 'liquidity':
+                                return "Liquidity is how easily you can buy or sell something without affecting its price. High liquidity means lots of people are trading, so you can quickly buy or sell at fair prices. Low liquidity means fewer traders, so large orders might move the price significantly.";
+                              case 'market-cap':
+                                return "Market cap tells you the total value of all coins in circulation. It's calculated by multiplying the price per coin by the number of coins that exist. A higher market cap usually indicates a more established and stable cryptocurrency, though it doesn't guarantee future performance.";
+                              case 'private-key':
+                                return "Your private key is like the master password to your cryptocurrency. Anyone who has it can spend your money, so it must be kept absolutely secret. Most people never see their private keys directly - wallet software manages them behind the scenes. Losing your private key means losing your cryptocurrency forever.";
+                              case 'public-key':
+                                return "Your public key is like your account number that you can safely share with others. It's mathematically connected to your private key but revealing it doesn't compromise your security. People use your public key to send you cryptocurrency or verify that you authorized a transaction.";
+                              case 'seed-phrase':
+                                return "A seed phrase is a human-readable backup of your private keys, usually 12 or 24 words. If your wallet breaks or gets lost, you can restore all your cryptocurrency using these words. It's crucial to write them down and store them securely offline - never take a photo or store them digitally.";
+                              case 'fomo':
+                                return "FOMO drives people to make investment decisions based on emotion rather than research. When cryptocurrency prices are rising rapidly, the fear of missing out can cause people to buy at the peak. This often leads to losses when prices inevitably correct downward.";
+                              case 'fud':
+                                return "FUD is negative information spread to make people panic and sell their cryptocurrency. Sometimes FUD is based on real concerns, but often it's exaggerated or misleading. Learning to distinguish between legitimate criticism and FUD is an important skill in crypto investing.";
+                              case 'whale':
+                                return "Whales are individuals or entities that own massive amounts of cryptocurrency. When they buy or sell, it can significantly impact prices because of the large volumes involved. Many traders watch whale movements to try to predict market direction, though whales don't always move markets intentionally.";
+                              case 'altcoin':
+                                return "Any cryptocurrency that isn't Bitcoin is considered an altcoin. This includes major cryptocurrencies like Ethereum, as well as thousands of smaller projects. Each altcoin typically offers different features or improvements over Bitcoin, such as faster transactions or smart contract capabilities.";
+                              case 'stablecoin':
+                                return "Stablecoins are designed to maintain a steady value, usually pegged to the US dollar. They provide a way to hold value in the crypto ecosystem without the volatility of other cryptocurrencies. Traders often use stablecoins as a safe haven during market downturns or as a stepping stone between different investments.";
+                              case 'address':
+                                return "A cryptocurrency address is like a bank account number that others can use to send you money. Each address is unique and derived from your public key. You can have many addresses for privacy reasons, and all transactions to these addresses are permanently recorded on the blockchain.";
+                              default:
+                                return `This concept represents an important piece of the cryptocurrency ecosystem. It involves specific technical or economic mechanisms that help digital currencies function properly. Understanding how this works gives you insight into the broader crypto landscape and can help you make more informed decisions when participating in the space.`;
+                            }
+                          };
+                          return getDetailedDescription(term);
+                        })()}
                       </p>
                     </div>
 
