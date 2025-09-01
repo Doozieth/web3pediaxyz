@@ -12,24 +12,24 @@ import { allCryptoTerms as cryptoTerms, categories, difficulties } from "@/data/
 // Category color mapping
 const getCategoryColor = (category: string) => {
   const colorMap: Record<string, string> = {
-    'Fundamentals': 'bg-blue-100 text-blue-800 border-blue-200 hover:bg-blue-200',
-    'Technology': 'bg-purple-100 text-purple-800 border-purple-200 hover:bg-purple-200',
-    'Trading': 'bg-green-100 text-green-800 border-green-200 hover:bg-green-200',
-    'DeFi': 'bg-indigo-100 text-indigo-800 border-indigo-200 hover:bg-indigo-200',
-    'NFTs': 'bg-pink-100 text-pink-800 border-pink-200 hover:bg-pink-200',
-    'Mining': 'bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-200',
-    'Security': 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200',
-    'Psychology': 'bg-amber-100 text-amber-800 border-amber-200 hover:bg-amber-200',
-    'Culture': 'bg-cyan-100 text-cyan-800 border-cyan-200 hover:bg-cyan-200',
-    'Economics': 'bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-200',
-    'Gaming': 'bg-violet-100 text-violet-800 border-violet-200 hover:bg-violet-200',
-    'Social': 'bg-rose-100 text-rose-800 border-rose-200 hover:bg-rose-200',
-    'Identity': 'bg-teal-100 text-teal-800 border-teal-200 hover:bg-teal-200',
-    'Tokenization': 'bg-lime-100 text-lime-800 border-lime-200 hover:bg-lime-200',
-    'Fundraising': 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200 hover:bg-fuchsia-200',
-    'Blockchain': 'bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-200'
+    'Fundamentals': 'text-blue-600 border-blue-200 hover:border-blue-400',
+    'Technology': 'text-purple-600 border-purple-200 hover:border-purple-400',
+    'Trading': 'text-green-600 border-green-200 hover:border-green-400',
+    'DeFi': 'text-indigo-600 border-indigo-200 hover:border-indigo-400',
+    'NFTs': 'text-pink-600 border-pink-200 hover:border-pink-400',
+    'Mining': 'text-orange-600 border-orange-200 hover:border-orange-400',
+    'Security': 'text-red-600 border-red-200 hover:border-red-400',
+    'Psychology': 'text-amber-600 border-amber-200 hover:border-amber-400',
+    'Culture': 'text-cyan-600 border-cyan-200 hover:border-cyan-400',
+    'Economics': 'text-emerald-600 border-emerald-200 hover:border-emerald-400',
+    'Gaming': 'text-violet-600 border-violet-200 hover:border-violet-400',
+    'Social': 'text-rose-600 border-rose-200 hover:border-rose-400',
+    'Identity': 'text-teal-600 border-teal-200 hover:border-teal-400',
+    'Tokenization': 'text-lime-600 border-lime-200 hover:border-lime-400',
+    'Fundraising': 'text-fuchsia-600 border-fuchsia-200 hover:border-fuchsia-400',
+    'Blockchain': 'text-slate-600 border-slate-200 hover:border-slate-400'
   };
-  return colorMap[category] || 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200';
+  return colorMap[category] || 'text-gray-600 border-gray-200 hover:border-gray-400';
 };
 
 const Index = () => {
@@ -537,7 +537,7 @@ const Index = () => {
                         <div className="flex gap-2">
                           <Badge 
                             variant="outline" 
-                            className={`text-xs cursor-pointer transition-all hover:scale-105 ${getCategoryColor(term.category)}`}
+                            className={`text-xs cursor-pointer transition-all hover:scale-105 bg-transparent ${getCategoryColor(term.category)}`}
                             onClick={(e) => {
                               e.stopPropagation();
                               handleCategoryToggle(term.category);
