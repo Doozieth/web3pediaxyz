@@ -228,7 +228,7 @@ const Index = () => {
 
       {/* Sticky Search Bar */}
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
-        <div className="container mx-auto px-4 py-4">
+        <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             {/* Home Button - appears when sticky */}
             <div className={`transition-all duration-500 ${isSearchBarSticky ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'}`}>
