@@ -172,7 +172,7 @@ const Index = () => {
                   <div className="flex flex-wrap gap-1">
                     {term.tags.slice(0, 5).map((tag) => (
                       <Badge key={tag} variant="outline" className="text-xs px-2 py-0.5 bg-muted/30 text-muted-foreground border-muted">
-                        #{tag}
+                        {tag}
                       </Badge>
                     ))}
                     {term.tags.length > 5 && (
