@@ -107,7 +107,7 @@ const Index = () => {
       {/* Header with centered title */}
       <header ref={headerRef} className="text-center pt-16 pb-5 px-4 border-b border-border/10">
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">web3pedia</h1>
-        <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
+        <p className="text-xl text-muted-foreground mb-1 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
       </header>
 
       {/* Sticky Search Bar */}
