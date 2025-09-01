@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown, Moon, Sun } from "lucide-react";
+import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown, Moon, Sun, Bookmark } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -395,39 +395,49 @@ const Index = () => {
                   animationDelay: `${index * 0.02}s`,
                 }}
               >
-                <AccordionTrigger className="hover:no-underline p-0">
+                <AccordionTrigger className="hover:no-underline p-0 [&>svg]:hidden">
                   <CardHeader className="pb-3 w-full">
                     <div className="flex items-start justify-between mb-2">
                       <CardTitle className="text-lg text-foreground font-semibold text-left">{term.term}</CardTitle>
-                      <div className="flex gap-2 ml-4">
-                        <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
-                          {term.category}
-                        </Badge>
-                        {term.difficulty && (
-                          <div className="flex items-center gap-0.5">
-                            {term.difficulty === 'Beginner' && (
-                              <>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                              </>
-                            )}
-                            {term.difficulty === 'Intermediate' && (
-                              <>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                              </>
-                            )}
-                            {term.difficulty === 'Advanced' && (
-                              <>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                              </>
-                            )}
-                          </div>
-                        )}
+                      <div className="flex items-center gap-3 ml-4">
+                        <div className="flex gap-2">
+                          <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                            {term.category}
+                          </Badge>
+                          {term.difficulty && (
+                            <div className="flex items-center gap-0.5">
+                              {term.difficulty === 'Beginner' && (
+                                <>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
+                                </>
+                              )}
+                              {term.difficulty === 'Intermediate' && (
+                                <>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
+                                </>
+                              )}
+                              {term.difficulty === 'Advanced' && (
+                                <>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                </>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-6 w-6 p-0 text-muted-foreground hover:text-primary bg-transparent border-0 shadow-none hover:bg-transparent"
+                          aria-label="Bookmark this term"
+                        >
+                          <Bookmark className="h-4 w-4" />
+                        </Button>
                       </div>
                     </div>
                     <p className="text-muted-foreground text-sm leading-relaxed text-left">
