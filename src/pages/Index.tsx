@@ -366,7 +366,7 @@ const Index = () => {
       </div>
 
       {/* Terms List */}
-      <main className={`container mx-auto px-4 transition-all duration-500 ${isSearchBarSticky ? 'pt-20' : 'pt-12'}`}>
+      <main className={`container mx-auto px-4 transition-all duration-700 ease-out ${isSearchBarSticky ? 'pt-20' : 'pt-12'}`}>
         <Accordion type="multiple" className="max-w-4xl mx-auto space-y-4">
           {filteredTerms.map((term, index) => (
             <AccordionItem
