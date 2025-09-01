@@ -122,6 +122,7 @@ const Index = () => {
           size="sm"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="absolute top-4 right-4 h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
+          aria-label="Toggle dark mode"
         >
           {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
         </Button>
