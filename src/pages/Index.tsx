@@ -77,6 +77,28 @@ const getCategoryTextColor = (category: string) => {
   };
   return colorMap[category] || 'text-gray-600';
 };
+// Get border color for category outlines
+const getCategoryBorderColor = (category: string) => {
+  const colorMap: Record<string, string> = {
+    'Fundamentals': 'border-blue-600',
+    'Technology': 'border-purple-600',
+    'Trading': 'border-green-600',
+    'DeFi': 'border-indigo-600',
+    'NFTs': 'border-pink-600',
+    'Mining': 'border-orange-600',
+    'Security': 'border-red-600',
+    'Psychology': 'border-amber-600',
+    'Culture': 'border-cyan-600',
+    'Economics': 'border-emerald-600',
+    'Gaming': 'border-violet-600',
+    'Social': 'border-rose-600',
+    'Identity': 'border-teal-600',
+    'Tokenization': 'border-lime-600',
+    'Fundraising': 'border-fuchsia-600',
+    'Blockchain': 'border-slate-600'
+  };
+  return colorMap[category] || 'border-gray-600';
+};
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -415,7 +437,7 @@ const Index = () => {
                           onCheckedChange={() => handleCategoryToggle(category)}
                           className="hover:bg-muted/50 group"
                         >
-                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' border-primary' : 'text-foreground'}`}>
+                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryBorderColor(category)} group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
                             {category}
                           </span>
                         </DropdownMenuCheckboxItem>
@@ -525,7 +547,7 @@ const Index = () => {
                       onCheckedChange={() => handleCategoryToggle(category)}
                       className="hover:bg-muted/50 group"
                     >
-                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' border-primary' : 'text-foreground'}`}>
+                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:${getCategoryBorderColor(category)} group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' ' + getCategoryBorderColor(category) : 'text-foreground'}`}>
                         {category}
                       </span>
                     </DropdownMenuCheckboxItem>
