@@ -156,29 +156,29 @@ const Index = () => {
                           {term.category}
                         </Badge>
                         {term.difficulty && (
-                          <span className="text-xs flex items-center gap-0.5">
+                          <div className="flex items-center gap-0.5">
                             {term.difficulty === 'Beginner' && (
                               <>
-                                <span className="text-primary text-[8px]">█</span>
-                                <span className="text-primary/20 text-[8px]">█</span>
-                                <span className="text-primary/20 text-[8px]">█</span>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
                               </>
                             )}
                             {term.difficulty === 'Intermediate' && (
                               <>
-                                <span className="text-primary text-[8px]">█</span>
-                                <span className="text-primary text-[8px]">█</span>
-                                <span className="text-primary/20 text-[8px]">█</span>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
                               </>
                             )}
                             {term.difficulty === 'Advanced' && (
                               <>
-                                <span className="text-primary text-[8px]">█</span>
-                                <span className="text-primary text-[8px]">█</span>
-                                <span className="text-primary text-[8px]">█</span>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                               </>
                             )}
-                          </span>
+                          </div>
                         )}
                       </div>
                     </div>
