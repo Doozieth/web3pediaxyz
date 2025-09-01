@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown } from "lucide-react";
+import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +13,7 @@ const Index = () => {
   const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<string>("default");
 
   useEffect(() => {
     let filtered = cryptoTerms;
@@ -37,8 +38,32 @@ const Index = () => {
       filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
     }
     
-    setFilteredTerms(filtered);
-  }, [searchTerm, selectedCategories, selectedDifficulties]);
+    // Apply sorting
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'a-z':
+          return a.term.localeCompare(b.term);
+        case 'z-a':
+          return b.term.localeCompare(a.term);
+        case 'difficulty-asc':
+          const difficultyOrder = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
+          const aDiff = difficultyOrder[a.difficulty as keyof typeof difficultyOrder] || 0;
+          const bDiff = difficultyOrder[b.difficulty as keyof typeof difficultyOrder] || 0;
+          return aDiff - bDiff;
+        case 'difficulty-desc':
+          const difficultyOrderDesc = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
+          const aDiffDesc = difficultyOrderDesc[a.difficulty as keyof typeof difficultyOrderDesc] || 0;
+          const bDiffDesc = difficultyOrderDesc[b.difficulty as keyof typeof difficultyOrderDesc] || 0;
+          return bDiffDesc - aDiffDesc;
+        case 'category':
+          return a.category.localeCompare(b.category);
+        default:
+          return 0; // Keep original order
+      }
+    });
+    
+    setFilteredTerms(sorted);
+  }, [searchTerm, selectedCategories, selectedDifficulties, sortBy]);
 
   const handleCategoryToggle = (category: string) => {
     setSelectedCategories(prev => 
@@ -80,55 +105,110 @@ const Index = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-12 pr-12 h-14 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl"
           />
-          
-          {/* Filter Icon inside search bar */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
-              >
-                <Filter className="h-5 w-5" />
-                {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
-                  <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
-                )}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64 bg-background border border-border/20 shadow-lg z-50">
-              <DropdownMenuLabel>Categories</DropdownMenuLabel>
-              {categories.map((category) => (
-                <DropdownMenuCheckboxItem
-                  key={category}
-                  checked={selectedCategories.includes(category)}
-                  onCheckedChange={() => handleCategoryToggle(category)}
-                  className="hover:bg-muted/50"
+           
+          {/* Sort and Filter Icons inside search bar */}
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1">
+            {/* Sort Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
                 >
-                  {category}
-                </DropdownMenuCheckboxItem>
-              ))}
-              
-              <DropdownMenuSeparator />
-              
-              <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
-              {difficulties.map((difficulty) => (
-                <DropdownMenuCheckboxItem
-                  key={difficulty}
-                  checked={selectedDifficulties.includes(difficulty)}
-                  onCheckedChange={() => handleDifficultyToggle(difficulty)}
-                  className="hover:bg-muted/50"
+                  <ArrowUpDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48 bg-background border border-border/20 shadow-lg z-50">
+                <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("default")}
+                  className={sortBy === "default" ? "bg-muted/50" : ""}
                 >
-                  {difficulty}
-                </DropdownMenuCheckboxItem>
-              ))}
-              
-              <DropdownMenuSeparator />
-              
-              <DropdownMenuItem onClick={clearFilters} className="text-destructive hover:bg-destructive/10">
-                Clear All Filters
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  Default
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("a-z")}
+                  className={sortBy === "a-z" ? "bg-muted/50" : ""}
+                >
+                  A-Z
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("z-a")}
+                  className={sortBy === "z-a" ? "bg-muted/50" : ""}
+                >
+                  Z-A
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("difficulty-asc")}
+                  className={sortBy === "difficulty-asc" ? "bg-muted/50" : ""}
+                >
+                  Beginner → Advanced
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("difficulty-desc")}
+                  className={sortBy === "difficulty-desc" ? "bg-muted/50" : ""}
+                >
+                  Advanced → Beginner
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  onClick={() => setSortBy("category")}
+                  className={sortBy === "category" ? "bg-muted/50" : ""}
+                >
+                  Category
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Filter Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
+                >
+                  <Filter className="h-5 w-5" />
+                  {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                    <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64 bg-background border border-border/20 shadow-lg z-50">
+                <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                {categories.map((category) => (
+                  <DropdownMenuCheckboxItem
+                    key={category}
+                    checked={selectedCategories.includes(category)}
+                    onCheckedChange={() => handleCategoryToggle(category)}
+                    className="hover:bg-muted/50"
+                  >
+                    {category}
+                  </DropdownMenuCheckboxItem>
+                ))}
+                
+                <DropdownMenuSeparator />
+                
+                <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
+                {difficulties.map((difficulty) => (
+                  <DropdownMenuCheckboxItem
+                    key={difficulty}
+                    checked={selectedDifficulties.includes(difficulty)}
+                    onCheckedChange={() => handleDifficultyToggle(difficulty)}
+                    className="hover:bg-muted/50"
+                  >
+                    {difficulty}
+                  </DropdownMenuCheckboxItem>
+                ))}
+                
+                <DropdownMenuSeparator />
+                
+                <DropdownMenuItem onClick={clearFilters} className="text-destructive hover:bg-destructive/10">
+                  Clear All Filters
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </header>
 
