@@ -32,6 +32,52 @@ const getCategoryColor = (category: string) => {
   return colorMap[category] || 'text-gray-600 border-gray-200 hover:border-gray-400';
 };
 
+// Get background color for dots/indicators
+const getCategoryBgColor = (category: string) => {
+  const colorMap: Record<string, string> = {
+    'Fundamentals': 'bg-blue-500',
+    'Technology': 'bg-purple-500',
+    'Trading': 'bg-green-500',
+    'DeFi': 'bg-indigo-500',
+    'NFTs': 'bg-pink-500',
+    'Mining': 'bg-orange-500',
+    'Security': 'bg-red-500',
+    'Psychology': 'bg-amber-500',
+    'Culture': 'bg-cyan-500',
+    'Economics': 'bg-emerald-500',
+    'Gaming': 'bg-violet-500',
+    'Social': 'bg-rose-500',
+    'Identity': 'bg-teal-500',
+    'Tokenization': 'bg-lime-500',
+    'Fundraising': 'bg-fuchsia-500',
+    'Blockchain': 'bg-slate-500'
+  };
+  return colorMap[category] || 'bg-gray-500';
+};
+
+// Get text color only for dropdowns
+const getCategoryTextColor = (category: string) => {
+  const colorMap: Record<string, string> = {
+    'Fundamentals': 'text-blue-600',
+    'Technology': 'text-purple-600',
+    'Trading': 'text-green-600',
+    'DeFi': 'text-indigo-600',
+    'NFTs': 'text-pink-600',
+    'Mining': 'text-orange-600',
+    'Security': 'text-red-600',
+    'Psychology': 'text-amber-600',
+    'Culture': 'text-cyan-600',
+    'Economics': 'text-emerald-600',
+    'Gaming': 'text-violet-600',
+    'Social': 'text-rose-600',
+    'Identity': 'text-teal-600',
+    'Tokenization': 'text-lime-600',
+    'Fundraising': 'text-fuchsia-600',
+    'Blockchain': 'text-slate-600'
+  };
+  return colorMap[category] || 'text-gray-600';
+};
+
 const Index = () => {
   const { theme, setTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
@@ -356,7 +402,7 @@ const Index = () => {
                       >
                         <Filter className="h-5 w-5" />
                         {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
-                          <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryColor(selectedCategories[0]).split(' ')[0] : 'bg-primary'}`}></div>
+                          <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryBgColor(selectedCategories[0]) : 'bg-primary'}`}></div>
                         )}
                       </Button>
                     </DropdownMenuTrigger>
@@ -367,9 +413,9 @@ const Index = () => {
                           key={category}
                           checked={selectedCategories.includes(category)}
                           onCheckedChange={() => handleCategoryToggle(category)}
-                          className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : ''}`}
+                          className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryTextColor(category) : ''}`}
                         >
-                          <span className={`group-hover:${getCategoryColor(category).split(' ')[1]} ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : 'text-foreground'}`}>
+                          <span className={`group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) : 'text-foreground'}`}>
                             {category}
                           </span>
                         </DropdownMenuCheckboxItem>
@@ -464,7 +510,7 @@ const Index = () => {
                   >
                     <Filter className="h-4 w-4" />
                     {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
-                      <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryColor(selectedCategories[0]).split(' ')[0] : 'bg-primary'}`}></div>
+                      <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryBgColor(selectedCategories[0]) : 'bg-primary'}`}></div>
                     )}
                   </Button>
                 </DropdownMenuTrigger>
@@ -475,9 +521,9 @@ const Index = () => {
                       key={category}
                       checked={selectedCategories.includes(category)}
                       onCheckedChange={() => handleCategoryToggle(category)}
-                      className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : ''}`}
+                      className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryTextColor(category) : ''}`}
                     >
-                      <span className={`group-hover:${getCategoryColor(category).split(' ')[1]} ${selectedCategories.includes(category) ? getCategoryColor(category).split(' ')[1] : 'text-foreground'}`}>
+                      <span className={`group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) : 'text-foreground'}`}>
                         {category}
                       </span>
                     </DropdownMenuCheckboxItem>
