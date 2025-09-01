@@ -140,7 +140,7 @@ const Index = () => {
       {/* Header with centered title */}
       <header ref={headerRef} className="relative text-center pt-16 pb-5 px-4 border-b border-border/10">
         {/* Top right controls */}
-        <div className="absolute top-4 right-4 flex gap-2">
+        <div className="absolute top-4 right-4 flex gap-1">
           <DropdownMenu open={showBookmarks} onOpenChange={setShowBookmarks}>
             <DropdownMenuTrigger asChild>
               <Button
