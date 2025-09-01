@@ -356,7 +356,7 @@ const Index = () => {
                       >
                         <Filter className="h-5 w-5" />
                         {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
-                          <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
+                          <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryColor(selectedCategories[0]).split(' ')[0] : 'bg-primary'}`}></div>
                         )}
                       </Button>
                     </DropdownMenuTrigger>
@@ -464,7 +464,7 @@ const Index = () => {
                   >
                     <Filter className="h-4 w-4" />
                     {(selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0) && (
-                      <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
+                      <div className={`absolute -top-1 -right-1 h-3 w-3 rounded-full ${selectedCategories.length > 0 ? getCategoryColor(selectedCategories[0]).split(' ')[0] : 'bg-primary'}`}></div>
                     )}
                   </Button>
                 </DropdownMenuTrigger>
