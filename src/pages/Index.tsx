@@ -15,6 +15,7 @@ const Index = () => {
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("default");
   const [isSearchBarSticky, setIsSearchBarSticky] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -71,7 +72,14 @@ const Index = () => {
     const handleScroll = () => {
       if (headerRef.current) {
         const headerBottom = headerRef.current.offsetTop + headerRef.current.offsetHeight;
-        setIsSearchBarSticky(window.scrollY > headerBottom);
+        const scrollY = window.scrollY;
+        const isSticky = scrollY > headerBottom;
+        
+        // Calculate scroll progress from 0 to 1 based on header height
+        const progress = Math.min(scrollY / headerBottom, 1);
+        
+        setIsSearchBarSticky(isSticky);
+        setScrollProgress(progress);
       }
     };
 
@@ -114,8 +122,15 @@ const Index = () => {
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
-            {/* Home Button - smooth Stripe-like reveal animation */}
-            <div className={`transition-all duration-700 ease-out ${isSearchBarSticky ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95 pointer-events-none'}`}>
+            {/* Home Button - gradual reveal based on scroll progress */}
+            <div 
+              className="transition-all duration-700 ease-out"
+              style={{
+                opacity: scrollProgress,
+                transform: `translateX(${(1 - scrollProgress) * 60}px) scale(${0.9 + (scrollProgress * 0.1)})`,
+                pointerEvents: scrollProgress > 0.3 ? 'auto' : 'none'
+              }}
+            >
               <Button
                 variant="ghost"
                 size="sm"
