@@ -1,156 +1,212 @@
-import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { Search, BookOpen, TrendingUp, Users, Globe } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Search, Star, TrendingUp } from "lucide-react";
-import { cryptoTerms, categories } from "@/data/cryptoTerms";
-import { useNavigate } from "react-router-dom";
+import { cryptoTerms } from "@/data/cryptoTerms";
+
 const Index = () => {
-  const navigate = useNavigate();
-  const featuredTerms = cryptoTerms.slice(0, 6);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredTerms(cryptoTerms);
+    } else {
+      const filtered = cryptoTerms.filter(
+        (term) =>
+          term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          term.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+      setFilteredTerms(filtered);
+    }
+  }, [searchTerm]);
+
   const totalTerms = cryptoTerms.length;
-  return <div className="min-h-screen bg-background">
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-hero">
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <div className="flex items-center justify-center mb-6">
-            <BookOpen className="h-8 w-8 text-primary-glow mr-2" />
-            <span className="text-primary-glow font-medium">Crypto Dictionary</span>
+  const categories = [...new Set(cryptoTerms.map(term => term.category))];
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <BookOpen className="h-8 w-8 text-primary" />
+              <span className="text-2xl font-bold text-foreground">web3pedia</span>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Badge variant="secondary" className="bg-primary/10 text-primary">
+                {totalTerms}+ Terms
+              </Badge>
+            </div>
           </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-16 bg-gradient-hero">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            web3pedia
+          </h1>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">web3pedia</h1>
-          
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your comprehensive guide to cryptocurrency and blockchain terminology. 
-            Understand {totalTerms}+ essential terms used in the crypto industry.
+          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Your comprehensive guide to cryptocurrency terminology
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-6" onClick={() => navigate('/glossary')}>
-              Explore Glossary
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20" onClick={() => navigate('/glossary')}>
-              <Search className="mr-2 h-5 w-5" />
-              Search Terms
-            </Button>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-4xl font-bold text-primary mb-2">{totalTerms}+</h3>
-              <p className="text-muted-foreground">Crypto Terms Defined</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-primary mb-2">{categories.length - 1}</h3>
-              <p className="text-muted-foreground">Categories Covered</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-primary mb-2">3</h3>
-              <p className="text-muted-foreground">Difficulty Levels</p>
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search crypto terms..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-12 pr-4 py-6 text-lg bg-white/10 border-white/30 text-white placeholder:text-white/70 focus:bg-white/20 transition-all"
+              />
             </div>
           </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-2">
+                <BookOpen className="h-6 w-6 text-primary-glow mr-2" />
+                <span className="text-3xl font-bold text-white">{totalTerms}+</span>
+              </div>
+              <p className="text-white/80">Crypto Terms</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-2">
+                <Globe className="h-6 w-6 text-primary-glow mr-2" />
+                <span className="text-3xl font-bold text-white">{categories.length}</span>
+              </div>
+              <p className="text-white/80">Categories</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-2">
+                <TrendingUp className="h-6 w-6 text-primary-glow mr-2" />
+                <span className="text-3xl font-bold text-white">2024</span>
+              </div>
+              <p className="text-white/80">Updated</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Featured Terms */}
+      {/* Terms Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-4">
-              <Star className="h-8 w-8 text-primary mr-3" />
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Featured Terms</h2>
+          {searchTerm && (
+            <div className="mb-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-2">
+                Search Results
+              </h2>
+              <p className="text-muted-foreground">
+                Found {filteredTerms.length} terms for "{searchTerm}"
+              </p>
             </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Start with these essential cryptocurrency terms to build your foundation
-            </p>
-          </div>
+          )}
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredTerms.map(term => <Card key={term.id} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 group cursor-pointer" onClick={() => navigate(`/term/${term.id}`)}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredTerms.map((term) => (
+              <Card key={term.id} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 group cursor-pointer">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors flex items-center">
-                    <BookOpen className="h-5 w-5 mr-2 text-primary" />
-                    {term.term}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">
+                  <div className="flex items-start justify-between mb-2">
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                      {term.term}
+                    </CardTitle>
+                    <Badge variant="outline" className="text-xs ml-2">
+                      {term.category}
+                    </Badge>
+                  </div>
+                  <CardDescription className="line-clamp-3">
                     {term.definition}
                   </CardDescription>
                 </CardHeader>
                 
                 <CardContent>
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge variant="secondary" className="bg-muted">{term.category}</Badge>
-                    <Badge variant="outline" className="text-xs">
-                      {term.difficulty}
-                    </Badge>
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {term.tags.slice(0, 3).map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs bg-muted">
+                        {tag}
+                      </Badge>
+                    ))}
                   </div>
                   
-                  <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-white transition-all">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  {term.difficulty && (
+                    <Badge variant={
+                      term.difficulty === 'Beginner' ? 'default' : 
+                      term.difficulty === 'Intermediate' ? 'secondary' : 
+                      'outline'
+                    } className="text-xs">
+                      {term.difficulty}
+                    </Badge>
+                  )}
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
-          
-          <div className="text-center">
-            <Button variant="outline" size="lg" onClick={() => navigate('/glossary')}>
-              View All {totalTerms} Terms
-            </Button>
-          </div>
+
+          {filteredTerms.length === 0 && searchTerm && (
+            <div className="text-center py-16">
+              <h3 className="text-xl font-semibold text-foreground mb-2">No terms found</h3>
+              <p className="text-muted-foreground">
+                Try searching with different keywords or browse all terms below.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Browse by Category</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Explore terms organized by different areas of the crypto ecosystem
-            </p>
+      {/* Categories Overview */}
+      {!searchTerm && (
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">Browse by Category</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Explore crypto terms organized by different areas of the ecosystem
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {categories.map((category) => {
+                const categoryCount = cryptoTerms.filter(term => term.category === category).length;
+                return (
+                  <Card key={category} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 cursor-pointer group">
+                    <CardContent className="p-6 text-center">
+                      <h3 className="font-semibold group-hover:text-primary transition-colors mb-1">
+                        {category}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {categoryCount} terms
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {categories.filter(cat => cat !== 'All').map(category => <Card key={category} className="transition-all duration-300 hover:shadow-purple hover:-translate-y-1 cursor-pointer group" onClick={() => navigate('/glossary')}>
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {category}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {cryptoTerms.filter(term => term.category === category).length} terms
-                  </p>
-                </CardContent>
-              </Card>)}
-          </div>
-        </div>
-      </section>
-      
+        </section>
+      )}
+
+      {/* Footer */}
       <footer className="bg-primary/5 border-t border-primary/10 py-12">
         <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Master Crypto Terminology?</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-4">Stay Updated</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Join thousands who have expanded their crypto knowledge with our comprehensive glossary.
+            The crypto space evolves rapidly. Bookmark web3pedia to stay current with the latest terminology.
           </p>
-          <Button variant="premium" size="lg" onClick={() => navigate('/glossary')}>
-            Start Learning Now
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <div className="text-sm text-muted-foreground mt-8">
-            <p>© 2024 CryptoGlossary. Your guide to crypto terminology.</p>
+          <div className="text-sm text-muted-foreground">
+            <p>© 2024 web3pedia. Your guide to crypto terminology.</p>
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
 export default Index;

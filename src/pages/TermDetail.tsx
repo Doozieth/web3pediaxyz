@@ -27,9 +27,10 @@ const TermDetail = () => {
     );
   }
 
-  const relatedTermsData = term.relatedTerms 
-    ? cryptoTerms.filter(t => term.relatedTerms?.includes(t.id))
-    : [];
+  // For now, show related terms from the same category
+  const relatedTermsData = cryptoTerms
+    .filter(t => t.category === term.category && t.id !== term.id)
+    .slice(0, 4);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
