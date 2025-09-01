@@ -160,15 +160,15 @@ const Index = () => {
                             {term.difficulty === 'Beginner' && (
                               <>
                                 <span className="text-primary text-[6px]">●</span>
-                                <span className="text-muted-foreground/30 text-[6px]">●</span>
-                                <span className="text-muted-foreground/30 text-[6px]">●</span>
+                                <span className="text-primary/20 text-[6px]">●</span>
+                                <span className="text-primary/20 text-[6px]">●</span>
                               </>
                             )}
                             {term.difficulty === 'Intermediate' && (
                               <>
                                 <span className="text-primary text-[6px]">●</span>
                                 <span className="text-primary text-[6px]">●</span>
-                                <span className="text-muted-foreground/30 text-[6px]">●</span>
+                                <span className="text-primary/20 text-[6px]">●</span>
                               </>
                             )}
                             {term.difficulty === 'Advanced' && (
