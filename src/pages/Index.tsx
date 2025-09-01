@@ -413,9 +413,9 @@ const Index = () => {
                           key={category}
                           checked={selectedCategories.includes(category)}
                           onCheckedChange={() => handleCategoryToggle(category)}
-                          className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryTextColor(category) : ''}`}
+                          className="hover:bg-muted/50 group"
                         >
-                          <span className={`group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) : 'text-foreground'}`}>
+                          <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' border-primary' : 'text-foreground'}`}>
                             {category}
                           </span>
                         </DropdownMenuCheckboxItem>
@@ -523,9 +523,9 @@ const Index = () => {
                       key={category}
                       checked={selectedCategories.includes(category)}
                       onCheckedChange={() => handleCategoryToggle(category)}
-                      className={`hover:bg-muted/50 group ${selectedCategories.includes(category) ? getCategoryTextColor(category) : ''}`}
+                      className="hover:bg-muted/50 group"
                     >
-                      <span className={`group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) : 'text-foreground'}`}>
+                      <span className={`px-2 py-1 rounded-full transition-all border border-transparent group-hover:border-primary group-hover:${getCategoryTextColor(category)} ${selectedCategories.includes(category) ? getCategoryTextColor(category) + ' border-primary' : 'text-foreground'}`}>
                         {category}
                       </span>
                     </DropdownMenuCheckboxItem>
