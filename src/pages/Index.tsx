@@ -535,7 +535,14 @@ const Index = () => {
                       <CardTitle className="text-lg text-foreground font-semibold text-left">{term.term}</CardTitle>
                       <div className="flex items-center gap-3 ml-4">
                         <div className="flex gap-2">
-                          <Badge variant="outline" className={`text-xs ${getCategoryColor(term.category)}`}>
+                          <Badge 
+                            variant="outline" 
+                            className={`text-xs cursor-pointer transition-all hover:scale-105 ${getCategoryColor(term.category)}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCategoryToggle(term.category);
+                            }}
+                          >
                             {term.category}
                           </Badge>
                           {term.difficulty && (
