@@ -159,23 +159,23 @@ const Index = () => {
                           <span className="text-xs flex items-center gap-0.5">
                             {term.difficulty === 'Beginner' && (
                               <>
-                                <span className="text-pink-500 text-[6px]">●</span>
-                                <span className="text-gray-300 text-[6px]">●</span>
-                                <span className="text-gray-300 text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-muted-foreground/30 text-[6px]">●</span>
+                                <span className="text-muted-foreground/30 text-[6px]">●</span>
                               </>
                             )}
                             {term.difficulty === 'Intermediate' && (
                               <>
-                                <span className="text-pink-500 text-[6px]">●</span>
-                                <span className="text-pink-500 text-[6px]">●</span>
-                                <span className="text-gray-300 text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-muted-foreground/30 text-[6px]">●</span>
                               </>
                             )}
                             {term.difficulty === 'Advanced' && (
                               <>
-                                <span className="text-pink-500 text-[6px]">●</span>
-                                <span className="text-pink-500 text-[6px]">●</span>
-                                <span className="text-pink-500 text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-primary text-[6px]">●</span>
                               </>
                             )}
                           </span>
