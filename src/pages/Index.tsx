@@ -9,27 +9,27 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { allCryptoTerms as cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
-// Category color mapping
+// Category color mapping - text only with transparent background
 const getCategoryColor = (category: string) => {
   const colorMap: Record<string, string> = {
-    'Fundamentals': 'text-blue-600 border-blue-200 hover:border-blue-400',
-    'Technology': 'text-purple-600 border-purple-200 hover:border-purple-400',
-    'Trading': 'text-green-600 border-green-200 hover:border-green-400',
-    'DeFi': 'text-indigo-600 border-indigo-200 hover:border-indigo-400',
-    'NFTs': 'text-pink-600 border-pink-200 hover:border-pink-400',
-    'Mining': 'text-orange-600 border-orange-200 hover:border-orange-400',
-    'Security': 'text-red-600 border-red-200 hover:border-red-400',
-    'Psychology': 'text-amber-600 border-amber-200 hover:border-amber-400',
-    'Culture': 'text-cyan-600 border-cyan-200 hover:border-cyan-400',
-    'Economics': 'text-emerald-600 border-emerald-200 hover:border-emerald-400',
-    'Gaming': 'text-violet-600 border-violet-200 hover:border-violet-400',
-    'Social': 'text-rose-600 border-rose-200 hover:border-rose-400',
-    'Identity': 'text-teal-600 border-teal-200 hover:border-teal-400',
-    'Tokenization': 'text-lime-600 border-lime-200 hover:border-lime-400',
-    'Fundraising': 'text-fuchsia-600 border-fuchsia-200 hover:border-fuchsia-400',
-    'Blockchain': 'text-slate-600 border-slate-200 hover:border-slate-400'
+    'Fundamentals': 'text-blue-600 border-transparent hover:border-blue-600',
+    'Technology': 'text-purple-600 border-transparent hover:border-purple-600',
+    'Trading': 'text-green-600 border-transparent hover:border-green-600',
+    'DeFi': 'text-indigo-600 border-transparent hover:border-indigo-600',
+    'NFTs': 'text-pink-600 border-transparent hover:border-pink-600',
+    'Mining': 'text-orange-600 border-transparent hover:border-orange-600',
+    'Security': 'text-red-600 border-transparent hover:border-red-600',
+    'Psychology': 'text-amber-600 border-transparent hover:border-amber-600',
+    'Culture': 'text-cyan-600 border-transparent hover:border-cyan-600',
+    'Economics': 'text-emerald-600 border-transparent hover:border-emerald-600',
+    'Gaming': 'text-violet-600 border-transparent hover:border-violet-600',
+    'Social': 'text-rose-600 border-transparent hover:border-rose-600',
+    'Identity': 'text-teal-600 border-transparent hover:border-teal-600',
+    'Tokenization': 'text-lime-600 border-transparent hover:border-lime-600',
+    'Fundraising': 'text-fuchsia-600 border-transparent hover:border-fuchsia-600',
+    'Blockchain': 'text-slate-600 border-transparent hover:border-slate-600'
   };
-  return colorMap[category] || 'text-gray-600 border-gray-200 hover:border-gray-400';
+  return colorMap[category] || 'text-gray-600 border-transparent hover:border-gray-600';
 };
 
 // Get background color for dots/indicators
@@ -583,7 +583,7 @@ const Index = () => {
                         <div className="flex gap-2">
                           <Badge 
                             variant="outline" 
-                            className={`text-xs cursor-pointer transition-all hover:scale-105 bg-transparent border-transparent ${getCategoryColor(term.category)}`}
+                            className={`text-xs cursor-pointer transition-all hover:scale-105 bg-transparent ${getCategoryColor(term.category)}`}
                             onClick={(e) => {
                               e.stopPropagation();
                               handleCategoryToggle(term.category);
@@ -641,7 +641,7 @@ const Index = () => {
                           <Badge 
                             key={tag} 
                             variant="outline" 
-                            className="text-xs px-2 py-0.5 bg-muted/20 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
+                            className="text-xs px-2 py-0.5 bg-transparent border-transparent text-muted-foreground hover:border-primary hover:text-primary transition-colors cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleTagToggle(tag);
@@ -653,7 +653,7 @@ const Index = () => {
                         {term.tags.length > 4 && (
                           <Badge 
                             variant="outline" 
-                            className="text-xs px-2 py-0.5 bg-muted/10 text-muted-foreground border-muted"
+                            className="text-xs px-2 py-0.5 bg-transparent border-transparent text-muted-foreground"
                           >
                             +{term.tags.length - 4}
                           </Badge>
@@ -770,7 +770,7 @@ const Index = () => {
                              <Badge 
                                key={tag} 
                                variant="outline" 
-                               className="text-xs px-3 py-1.5 bg-muted/30 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
+                               className="text-xs px-3 py-1.5 bg-transparent border-transparent text-muted-foreground hover:border-primary hover:text-primary transition-colors cursor-pointer"
                                onClick={(e) => {
                                  e.stopPropagation();
                                  handleTagToggle(tag);
