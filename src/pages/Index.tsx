@@ -603,23 +603,23 @@ const Index = () => {
                               <div className="flex items-center gap-0.5">
                                 {term.difficulty === 'Beginner' && (
                                   <>
-                                    <div className="w-3 h-2 bg-green-500 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary/20 rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary/20 rounded-full"></div>
                                   </>
                                 )}
                                 {term.difficulty === 'Intermediate' && (
                                   <>
-                                    <div className="w-3 h-2 bg-yellow-500 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-yellow-500 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary/20 rounded-full"></div>
                                   </>
                                 )}
                                 {term.difficulty === 'Advanced' && (
                                   <>
-                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
-                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
+                                    <div className="w-2 h-3 bg-primary rounded-full"></div>
                                   </>
                                 )}
                               </div>
