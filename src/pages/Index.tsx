@@ -114,7 +114,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header with centered title */}
       <header ref={headerRef} className="text-center pt-16 pb-5 px-4 border-b border-border/10">
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">web3pedia</h1>
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+          <span className="font-black">web3</span><span className="font-semibold">pedia</span>
+        </h1>
         <p className="text-xl text-muted-foreground mb-1 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
       </header>
 
