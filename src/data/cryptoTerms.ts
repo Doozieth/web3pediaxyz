@@ -1097,8 +1097,100 @@ export const cryptoTerms: CryptoTerm[] = [
     term: 'Wrapped Token',
     definition: 'A tokenized version of another cryptocurrency that can be used on different blockchains.',
     category: 'Technology',
-    difficulty: 'Intermediate',
+     difficulty: 'Intermediate',
     tags: ['tokenized', 'cross-chain', 'representation']
+  },
+  
+  // Social Terms
+  {
+    id: 'gm',
+    term: 'GM (Good Morning)',
+    definition: 'A friendly greeting commonly used in crypto Twitter and Discord communities, often accompanied by motivational messages about crypto.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['greeting', 'community', 'twitter'],
+    examples: ['GM crypto fam!', 'GM to all HODLers']
+  },
+  {
+    id: 'gn',
+    term: 'GN (Good Night)',
+    definition: 'A way to say goodbye in crypto communities, often posted before logging off social media for the day.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['goodbye', 'community', 'social'],
+    examples: ['GN crypto Twitter', 'GN everyone, see you at the moon']
+  },
+  {
+    id: 'wagmi',
+    term: 'WAGMI (We Are Gonna Make It)',
+    definition: 'An optimistic expression of confidence that the crypto community will succeed and profit together.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['optimism', 'community', 'success'],
+    examples: ['WAGMI together!', 'Diamond hands WAGMI']
+  },
+  {
+    id: 'ngmi',
+    term: 'NGMI (Not Gonna Make It)',
+    definition: 'Used to express that someone is making poor investment decisions or not understanding crypto properly.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['criticism', 'poor decisions', 'community'],
+    examples: ['Selling the bottom? NGMI', 'Paper hands are NGMI']
+  },
+  {
+    id: 'lfg',
+    term: 'LFG (Let\'s F***ing Go)',
+    definition: 'An expression of excitement and enthusiasm, often used when prices are rising or good news is announced.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['excitement', 'enthusiasm', 'bullish'],
+    examples: ['Bitcoin ATH! LFG!', 'New partnership announced, LFG!']
+  },
+  {
+    id: 'alpha',
+    term: 'Alpha',
+    definition: 'Exclusive or valuable information about crypto projects that could lead to profitable investments.',
+    category: 'Social',
+    difficulty: 'Intermediate',
+    tags: ['information', 'insider knowledge', 'profit'],
+    examples: ['Got some alpha on a new DeFi project', 'Sharing alpha with the community']
+  },
+  {
+    id: 'cope',
+    term: 'Cope',
+    definition: 'When someone refuses to accept losses or bad news about their crypto investments, often making excuses.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['denial', 'psychology', 'losses'],
+    examples: ['This is just a dip, not a crash (cope)', 'Copium levels are high']
+  },
+  {
+    id: 'shill',
+    term: 'Shill',
+    definition: 'Promoting a cryptocurrency project heavily, often for personal gain or because you hold the token.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['promotion', 'marketing', 'bias'],
+    examples: ['Stop shilling your bags', 'Influencer shilling new altcoin']
+  },
+  {
+    id: 'ser',
+    term: 'Ser',
+    definition: 'A playful way to say "sir" in crypto communities, often used when asking questions or making requests.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['respectful', 'community', 'slang'],
+    examples: ['Wen moon ser?', 'Please explain ser']
+  },
+  {
+    id: 'few',
+    term: 'Few',
+    definition: 'Short for "few understand," implying that only a small number of people truly grasp the importance of something.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['exclusive knowledge', 'understanding', 'superiority'],
+    examples: ['Bitcoin is the future. Few.', 'DeFi will replace banks. Few understand.']
   }
 ];
 
@@ -1111,6 +1203,7 @@ export const categories = [
   'Security',
   'NFTs',
   'Culture',
+  'Social',
   'Marketing',
   'Psychology',
   'Compliance',
