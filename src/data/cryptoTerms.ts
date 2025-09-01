@@ -1919,9 +1919,6 @@ export const newCoinbaseTerms: CryptoTerm[] = [
   }
 ];
 
-// Combine original and new terms
-export const allCryptoTerms = [...cryptoTerms, ...newCoinbaseTerms];
-
 export const categories = [
   'Fundamentals',
   'Technology', 
@@ -1930,15 +1927,219 @@ export const categories = [
   'NFTs',
   'Mining',
   'Security',
-  'Psychology',
-  'Culture',
-  'Economics',
   'Gaming',
   'Social',
-  'Identity',
-  'Tokenization',
-  'Fundraising',
+  'Digital Assets',
+  'Finance',
+  'Governance',
   'Blockchain'
 ];
+
+// Additional terms from v0 website
+export const v0WebsiteTerms: CryptoTerm[] = [
+  {
+    id: 'pump-and-dump',
+    term: 'Pump and Dump',
+    definition: 'A form of market manipulation where the price of a cryptocurrency is artificially inflated through misleading marketing, followed by a rapid sell-off.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['manipulation', 'scam', 'trading'],
+    examples: ['Coordinated social media campaigns', 'Celebrity endorsements', 'Telegram pump groups']
+  },
+  {
+    id: 'rug-pull',
+    term: 'Rug Pull',
+    definition: 'A type of exit scam where developers abandon a project and steal investors\' funds.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['scam', 'exit', 'defi'],
+    examples: ['DeFi project abandonment', 'Liquidity pool draining', 'Token contract exploits']
+  },
+  {
+    id: 'flash-loan',
+    term: 'Flash Loan',
+    definition: 'A type of uncollateralized loan that must be borrowed and repaid within the same blockchain transaction.',
+    category: 'DeFi',
+    difficulty: 'Advanced',
+    tags: ['lending', 'defi', 'arbitrage'],
+    examples: ['Aave flash loans', 'Arbitrage opportunities', 'Liquidation assistance']
+  },
+  {
+    id: 'atomic-swap',
+    term: 'Atomic Swap',
+    definition: 'A smart contract technology that enables the exchange of cryptocurrencies from different blockchains without intermediaries.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['cross-chain', 'decentralized', 'swap'],
+    examples: ['Bitcoin-Litecoin swaps', 'Cross-chain DEX protocols', 'Peer-to-peer exchanges']
+  },
+  {
+    id: 'multisig',
+    term: 'Multisig',
+    definition: 'Multi-signature wallet that requires multiple private keys to authorize a cryptocurrency transaction.',
+    category: 'Security',
+    difficulty: 'Intermediate',
+    tags: ['wallet', 'security', 'shared-control'],
+    examples: ['2-of-3 multisig wallets', 'Corporate treasury management', 'DAO fund management']
+  },
+  {
+    id: 'sharding',
+    term: 'Sharding',
+    definition: 'A scaling technique that divides a blockchain network into smaller, parallel chains to increase transaction throughput.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['scalability', 'parallel', 'network'],
+    examples: ['Ethereum 2.0 sharding', 'Zilliqa sharding', 'Near Protocol sharding']
+  },
+  {
+    id: 'zero-knowledge-proof',
+    term: 'Zero-Knowledge Proof',
+    definition: 'A cryptographic method that allows one party to prove knowledge of information without revealing the information itself.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['privacy', 'cryptography', 'proof'],
+    examples: ['zk-SNARKs', 'zk-STARKs', 'Privacy coins like Zcash']
+  },
+  {
+    id: 'dyor',
+    term: 'DYOR',
+    definition: 'Do Your Own Research - advice to thoroughly investigate before investing in any cryptocurrency project.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['research', 'advice', 'investment'],
+    examples: ['Reading whitepapers', 'Analyzing team credentials', 'Checking project roadmaps']
+  },
+  {
+    id: 'wagmi',
+    term: 'WAGMI',
+    definition: 'We\'re All Gonna Make It - an optimistic rallying cry expressing confidence in crypto success.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['optimism', 'community', 'success'],
+    examples: ['Community encouragement posts', 'Bull market celebrations', 'Project milestone announcements']
+  },
+  {
+    id: 'gm',
+    term: 'GM',
+    definition: 'Good Morning - a friendly greeting commonly used in crypto Twitter and Discord communities.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['greeting', 'community', 'culture'],
+    examples: ['Daily Twitter greetings', 'Discord community check-ins', 'Influencer morning posts']
+  },
+  {
+    id: 'web3',
+    term: 'Web3',
+    definition: 'The vision of a decentralized internet built on blockchain technology, giving users control over their data and digital assets.',
+    category: 'Technology',
+    difficulty: 'Intermediate',
+    tags: ['decentralization', 'internet', 'ownership'],
+    examples: ['Decentralized social media', 'Blockchain-based gaming', 'Decentralized finance platforms']
+  },
+  {
+    id: 'metaverse',
+    term: 'Metaverse',
+    definition: 'A virtual world or collection of virtual worlds where users can interact, work, and play using digital avatars.',
+    category: 'Digital Assets',
+    difficulty: 'Intermediate',
+    tags: ['virtual-reality', 'gaming', 'digital-world'],
+    examples: ['Decentraland', 'The Sandbox', 'Axie Infinity']
+  },
+  {
+    id: 'gamefi',
+    term: 'GameFi',
+    definition: 'The intersection of gaming and decentralized finance, where players can earn cryptocurrency through gameplay.',
+    category: 'Gaming',
+    difficulty: 'Intermediate',
+    tags: ['gaming', 'play-to-earn', 'defi'],
+    examples: ['Axie Infinity', 'Splinterlands', 'Gods Unchained']
+  },
+  {
+    id: 'cross-chain',
+    term: 'Cross-chain',
+    definition: 'Technology that enables interoperability between different blockchain networks.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['interoperability', 'bridge', 'multi-chain'],
+    examples: ['Polkadot parachains', 'Cosmos IBC', 'Ethereum-BSC bridges']
+  },
+  {
+    id: 'oracle',
+    term: 'Oracle',
+    definition: 'A service that provides external data to blockchain networks and smart contracts.',
+    category: 'Technology',
+    difficulty: 'Advanced',
+    tags: ['external-data', 'smart-contracts', 'connectivity'],
+    examples: ['Chainlink price feeds', 'Weather data oracles', 'Sports betting oracles']
+  },
+  {
+    id: 'tokenomics',
+    term: 'Tokenomics',
+    definition: 'The economic model and structure of a cryptocurrency token, including supply, distribution, and utility.',
+    category: 'Finance',
+    difficulty: 'Intermediate',
+    tags: ['economics', 'token-design', 'utility'],
+    examples: ['Bitcoin\'s fixed supply', 'Ethereum\'s fee burning', 'Governance token distribution']
+  },
+  {
+    id: 'governance-token',
+    term: 'Governance Token',
+    definition: 'A cryptocurrency token that gives holders voting rights in the governance of a decentralized protocol or organization.',
+    category: 'Governance',
+    difficulty: 'Intermediate',
+    tags: ['voting', 'dao', 'governance'],
+    examples: ['UNI (Uniswap)', 'COMP (Compound)', 'MKR (MakerDAO)']
+  },
+  {
+    id: 'slippage',
+    term: 'Slippage',
+    definition: 'The difference between the expected price of a trade and the actual executed price, often occurring in volatile markets.',
+    category: 'Trading',
+    difficulty: 'Intermediate',
+    tags: ['trading', 'liquidity', 'price-impact'],
+    examples: ['DEX trading slippage', 'Large order market impact', 'Low liquidity pairs']
+  },
+  {
+    id: 'impermanent-loss',
+    term: 'Impermanent Loss',
+    definition: 'The temporary loss of funds experienced by liquidity providers due to volatility in trading pairs.',
+    category: 'DeFi',
+    difficulty: 'Advanced',
+    tags: ['liquidity', 'amm', 'risk'],
+    examples: ['Uniswap liquidity provision', 'AMM pool participation', 'Yield farming risks']
+  },
+  {
+    id: 'arbitrage',
+    term: 'Arbitrage',
+    definition: 'The practice of buying and selling identical assets in different markets to profit from price differences.',
+    category: 'Trading',
+    difficulty: 'Intermediate',
+    tags: ['trading', 'price-efficiency', 'profit'],
+    examples: ['Exchange arbitrage', 'DEX-CEX arbitrage', 'Triangular arbitrage']
+  },
+  {
+    id: 'ico',
+    term: 'ICO',
+    definition: 'Initial Coin Offering - a fundraising method where new cryptocurrency projects sell tokens to early investors.',
+    category: 'Finance',
+    difficulty: 'Intermediate',
+    tags: ['fundraising', 'token-sale', 'investment'],
+    examples: ['Ethereum ICO (2014)', 'EOS ICO', 'Various 2017 ICO projects']
+  },
+  {
+    id: 'airdrop',
+    term: 'Airdrop',
+    definition: 'The distribution of free cryptocurrency tokens to wallet addresses, often used for marketing or community building.',
+    category: 'Digital Assets',
+    difficulty: 'Beginner',
+    tags: ['distribution', 'marketing', 'free-tokens'],
+    examples: ['Uniswap UNI token distribution', 'Ethereum fork airdrops', 'New project launches']
+  }
+];
+
+// Combine original and new terms
+export const allCryptoTerms = [...cryptoTerms, ...newCoinbaseTerms, ...v0WebsiteTerms].filter(term => 
+  !['Psychology', 'Culture', 'Economics', 'Identity', 'Tokenization', 'Fundraising'].includes(term.category)
+);
 
 export const difficulties = ['Beginner', 'Intermediate', 'Advanced'];

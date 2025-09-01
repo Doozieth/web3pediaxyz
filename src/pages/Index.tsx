@@ -19,14 +19,11 @@ const getCategoryColor = (category: string) => {
     'NFTs': 'text-pink-600 border-transparent hover:border-pink-600',
     'Mining': 'text-orange-600 border-transparent hover:border-orange-600',
     'Security': 'text-red-600 border-transparent hover:border-red-600',
-    'Psychology': 'text-amber-600 border-transparent hover:border-amber-600',
-    'Culture': 'text-cyan-600 border-transparent hover:border-cyan-600',
-    'Economics': 'text-emerald-600 border-transparent hover:border-emerald-600',
     'Gaming': 'text-violet-600 border-transparent hover:border-violet-600',
     'Social': 'text-rose-600 border-transparent hover:border-rose-600',
-    'Identity': 'text-teal-600 border-transparent hover:border-teal-600',
-    'Tokenization': 'text-lime-600 border-transparent hover:border-lime-600',
-    'Fundraising': 'text-fuchsia-600 border-transparent hover:border-fuchsia-600',
+    'Digital Assets': 'text-cyan-600 border-transparent hover:border-cyan-600',
+    'Finance': 'text-emerald-600 border-transparent hover:border-emerald-600',
+    'Governance': 'text-amber-600 border-transparent hover:border-amber-600',
     'Blockchain': 'text-slate-600 border-transparent hover:border-slate-600'
   };
   return colorMap[category] || 'text-gray-600 border-transparent hover:border-gray-600';
@@ -42,14 +39,11 @@ const getCategoryBgColor = (category: string) => {
     'NFTs': 'bg-pink-500',
     'Mining': 'bg-orange-500',
     'Security': 'bg-red-500',
-    'Psychology': 'bg-amber-500',
-    'Culture': 'bg-cyan-500',
-    'Economics': 'bg-emerald-500',
     'Gaming': 'bg-violet-500',
     'Social': 'bg-rose-500',
-    'Identity': 'bg-teal-500',
-    'Tokenization': 'bg-lime-500',
-    'Fundraising': 'bg-fuchsia-500',
+    'Digital Assets': 'bg-cyan-500',
+    'Finance': 'bg-emerald-500',
+    'Governance': 'bg-amber-500',
     'Blockchain': 'bg-slate-500'
   };
   return colorMap[category] || 'bg-gray-500';
@@ -65,14 +59,11 @@ const getCategoryTextColor = (category: string) => {
     'NFTs': 'text-pink-600',
     'Mining': 'text-orange-600',
     'Security': 'text-red-600',
-    'Psychology': 'text-amber-600',
-    'Culture': 'text-cyan-600',
-    'Economics': 'text-emerald-600',
     'Gaming': 'text-violet-600',
     'Social': 'text-rose-600',
-    'Identity': 'text-teal-600',
-    'Tokenization': 'text-lime-600',
-    'Fundraising': 'text-fuchsia-600',
+    'Digital Assets': 'text-cyan-600',
+    'Finance': 'text-emerald-600',
+    'Governance': 'text-amber-600',
     'Blockchain': 'text-slate-600'
   };
   return colorMap[category] || 'text-gray-600';
@@ -87,14 +78,11 @@ const getCategoryBorderColor = (category: string) => {
     'NFTs': 'border-pink-600',
     'Mining': 'border-orange-600',
     'Security': 'border-red-600',
-    'Psychology': 'border-amber-600',
-    'Culture': 'border-cyan-600',
-    'Economics': 'border-emerald-600',
     'Gaming': 'border-violet-600',
     'Social': 'border-rose-600',
-    'Identity': 'border-teal-600',
-    'Tokenization': 'border-lime-600',
-    'Fundraising': 'border-fuchsia-600',
+    'Digital Assets': 'border-cyan-600',
+    'Finance': 'border-emerald-600',
+    'Governance': 'border-amber-600',
     'Blockchain': 'border-slate-600'
   };
   return colorMap[category] || 'border-gray-600';
