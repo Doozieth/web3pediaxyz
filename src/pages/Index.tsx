@@ -70,29 +70,27 @@ const Index = () => {
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
         
         {/* Search Bar with Filter */}
-        <div className="max-w-4xl mx-auto flex gap-4 items-center">
-          <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
-            <Input
-              type="text"
-              placeholder="Search crypto terms"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 h-14 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl"
-            />
-          </div>
+        <div className="max-w-2xl mx-auto relative">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
+          <Input
+            type="text"
+            placeholder="Search crypto terms"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-12 pr-12 h-14 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl"
+          />
           
-          {/* Filter Dropdown */}
+          {/* Filter Icon inside search bar */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="h-14 px-6 border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 rounded-xl">
-                <Filter className="h-5 w-5 mr-2" />
-                Filter
-                <ChevronDown className="h-4 w-4 ml-2" />
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-transparent"
+              >
+                <Filter className="h-5 w-5" />
                 {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
-                  <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">
-                    {selectedCategories.length + selectedDifficulties.length}
-                  </Badge>
+                  <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
                 )}
               </Button>
             </DropdownMenuTrigger>
