@@ -122,20 +122,22 @@ const Index = () => {
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
-            {/* Home Button - gradual reveal based on scroll progress */}
+            {/* Home Button - progressive text reveal from behind search bar */}
             <div 
-              className="transition-all duration-700 ease-out"
+              className="relative overflow-hidden transition-all duration-100 ease-out"
               style={{
-                opacity: scrollProgress,
-                transform: `translateX(${(1 - scrollProgress) * 60}px) scale(${0.9 + (scrollProgress * 0.1)})`,
-                pointerEvents: scrollProgress > 0.3 ? 'auto' : 'none'
+                width: `${Math.max(scrollProgress * 120, scrollProgress > 0 ? 12 : 0)}px`,
+                pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
               }}
             >
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-200 hover:scale-105"
+                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-200 hover:scale-105 absolute left-0 top-0"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                style={{
+                  opacity: Math.min(scrollProgress * 2, 1)
+                }}
               >
                 web3pedia
               </Button>
