@@ -184,9 +184,19 @@ const Index = () => {
                         Detailed Description
                       </h4>
                       <p className="text-sm text-muted-foreground leading-relaxed">
-                        {term.definition} This technology has revolutionized how we think about digital transactions and decentralized systems. 
-                        Understanding this concept is crucial for anyone looking to navigate the cryptocurrency space effectively. 
-                        The implications of this term extend beyond simple definitions into practical applications that shape the future of digital finance.
+                        {term.category === 'Fundamentals' && term.term === 'Bitcoin (BTC)' && 
+                          "Bitcoin operates on a peer-to-peer network without the need for intermediaries like banks. It uses proof-of-work consensus mechanism where miners compete to solve complex mathematical puzzles. The total supply is capped at 21 million coins, making it deflationary by design. Bitcoin has gained adoption as both a medium of exchange and a store of value, often referred to as 'digital gold'."
+                        }
+                        {term.category === 'Fundamentals' && term.term === 'Blockchain' && 
+                          "Each block contains a cryptographic hash of the previous block, timestamp, and transaction data, creating an immutable chain. The decentralized nature means no single entity controls the network, making it resistant to censorship and fraud. Blockchain technology extends beyond cryptocurrencies to supply chain management, voting systems, and digital identity verification. The transparency and immutability of blockchain records provide unprecedented levels of trust in digital transactions."
+                        }
+                        {term.category === 'Technology' && term.term === 'Smart Contract' && 
+                          "Smart contracts eliminate the need for intermediaries by automatically executing when predetermined conditions are met. They run on blockchain networks like Ethereum, ensuring transparency and immutability of contract terms. These self-executing contracts can handle complex business logic, from simple payments to sophisticated financial instruments. Smart contracts have enabled the entire DeFi ecosystem, allowing for automated lending, trading, and yield farming."
+                        }
+                        {!((term.category === 'Fundamentals' && (term.term === 'Bitcoin (BTC)' || term.term === 'Blockchain')) || 
+                           (term.category === 'Technology' && term.term === 'Smart Contract')) && 
+                          `${term.definition} This concept plays a vital role in the broader cryptocurrency ecosystem and understanding its mechanics helps investors and users make more informed decisions. The practical applications of this technology continue to evolve as the industry matures and finds new use cases.`
+                        }
                       </p>
                     </div>
 
