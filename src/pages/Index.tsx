@@ -143,12 +143,45 @@ const Index = () => {
               }}
             >
               <CardHeader className="pb-3">
-                <CardTitle className="text-lg text-foreground font-semibold">{term.term}</CardTitle>
+                <div className="flex items-start justify-between mb-2">
+                  <CardTitle className="text-lg text-foreground font-semibold">{term.term}</CardTitle>
+                  <div className="flex gap-2 ml-4">
+                    <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                      {term.category}
+                    </Badge>
+                    {term.difficulty && (
+                      <Badge 
+                        variant={
+                          term.difficulty === 'Beginner' ? 'default' : 
+                          term.difficulty === 'Intermediate' ? 'secondary' : 
+                          'destructive'
+                        } 
+                        className="text-xs"
+                      >
+                        {term.difficulty}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                   {term.definition}
                 </p>
+                {term.tags && term.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {term.tags.slice(0, 5).map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs px-2 py-0.5 bg-muted/30 text-muted-foreground border-muted">
+                        #{tag}
+                      </Badge>
+                    ))}
+                    {term.tags.length > 5 && (
+                      <Badge variant="outline" className="text-xs px-2 py-0.5 bg-muted/30 text-muted-foreground border-muted">
+                        +{term.tags.length - 5} more
+                      </Badge>
+                    )}
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
