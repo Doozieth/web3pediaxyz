@@ -129,7 +129,7 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-foreground font-semibold hover:bg-primary/10 whitespace-nowrap transition-all duration-100 hover:scale-105"
+                className="text-foreground font-semibold whitespace-nowrap transition-all duration-100 hover:scale-105"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 style={{
                   transform: `translateX(${(1 - scrollProgress) * 200}px)`,
