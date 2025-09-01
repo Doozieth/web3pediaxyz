@@ -366,10 +366,9 @@ const Index = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-10 px-3 text-muted-foreground hover:text-foreground border-border/20"
+                    className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground border-border/20"
                   >
-                    <ArrowUpDown className="h-4 w-4 mr-2" />
-                    Sort
+                    <ArrowUpDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-48 bg-background border border-border/20 shadow-lg z-50">
@@ -419,10 +418,9 @@ const Index = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-10 px-3 text-muted-foreground hover:text-foreground border-border/20 relative"
+                    className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground border-border/20 relative"
                   >
-                    <Filter className="h-4 w-4 mr-2" />
-                    Filter
+                    <Filter className="h-4 w-4" />
                     {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
                       <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></div>
                     )}
