@@ -1,30 +1,66 @@
 import { useState, useEffect } from "react";
-import { Search, BookOpen, TrendingUp, Users, Globe } from "lucide-react";
+import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { cryptoTerms } from "@/data/cryptoTerms";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
+import { cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
 
   useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setFilteredTerms(cryptoTerms);
-    } else {
-      const filtered = cryptoTerms.filter(
+    let filtered = cryptoTerms;
+    
+    // Filter by search term
+    if (searchTerm.trim() !== "") {
+      filtered = filtered.filter(
         (term) =>
           term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
           term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
           term.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       );
-      setFilteredTerms(filtered);
     }
-  }, [searchTerm]);
+    
+    // Filter by categories
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter(term => selectedCategories.includes(term.category));
+    }
+    
+    // Filter by difficulties
+    if (selectedDifficulties.length > 0) {
+      filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
+    }
+    
+    setFilteredTerms(filtered);
+  }, [searchTerm, selectedCategories, selectedDifficulties]);
+
+  const handleCategoryToggle = (category: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(category) 
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const handleDifficultyToggle = (difficulty: string) => {
+    setSelectedDifficulties(prev => 
+      prev.includes(difficulty) 
+        ? prev.filter(d => d !== difficulty)
+        : [...prev, difficulty]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedCategories([]);
+    setSelectedDifficulties([]);
+  };
 
   const totalTerms = cryptoTerms.length;
-  const categories = [...new Set(cryptoTerms.map(term => term.category))];
 
   return (
     <div className="min-h-screen bg-background">
@@ -33,16 +69,67 @@ const Index = () => {
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">web3pedia</h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
         
-        {/* Search Bar */}
-        <div className="max-w-2xl mx-auto relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
-          <Input
-            type="text"
-            placeholder="Search crypto terms"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-12 h-14 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl"
-          />
+        {/* Search Bar with Filter */}
+        <div className="max-w-4xl mx-auto flex gap-4 items-center">
+          <div className="flex-1 relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
+            <Input
+              type="text"
+              placeholder="Search crypto terms"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-12 h-14 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl"
+            />
+          </div>
+          
+          {/* Filter Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="h-14 px-6 border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 rounded-xl">
+                <Filter className="h-5 w-5 mr-2" />
+                Filter
+                <ChevronDown className="h-4 w-4 ml-2" />
+                {(selectedCategories.length > 0 || selectedDifficulties.length > 0) && (
+                  <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">
+                    {selectedCategories.length + selectedDifficulties.length}
+                  </Badge>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-64 bg-background border border-border/20 shadow-lg z-50">
+              <DropdownMenuLabel>Categories</DropdownMenuLabel>
+              {categories.map((category) => (
+                <DropdownMenuCheckboxItem
+                  key={category}
+                  checked={selectedCategories.includes(category)}
+                  onCheckedChange={() => handleCategoryToggle(category)}
+                  className="hover:bg-muted/50"
+                >
+                  {category}
+                </DropdownMenuCheckboxItem>
+              ))}
+              
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuLabel>Difficulty</DropdownMenuLabel>
+              {difficulties.map((difficulty) => (
+                <DropdownMenuCheckboxItem
+                  key={difficulty}
+                  checked={selectedDifficulties.includes(difficulty)}
+                  onCheckedChange={() => handleDifficultyToggle(difficulty)}
+                  className="hover:bg-muted/50"
+                >
+                  {difficulty}
+                </DropdownMenuCheckboxItem>
+              ))}
+              
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuItem onClick={clearFilters} className="text-destructive hover:bg-destructive/10">
+                Clear All Filters
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </header>
 
