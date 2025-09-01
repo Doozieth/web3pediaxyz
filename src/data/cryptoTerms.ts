@@ -80,7 +80,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Trading',
     difficulty: 'Intermediate',
     tags: ['trading', 'price difference', 'profit'],
-    examples: ['Buying Bitcoin on one exchange and selling on another for profit']
+    examples: ['Buying ETH at $2,000 on Binance and selling at $2,005 on Coinbase for $5 profit per ETH', 'Triangular arbitrage: USDT→BTC→ETH→USDT earning 0.1% on $100k capital', 'Cross-chain arbitrage moving 50 ETH between Ethereum and Polygon for price differences']
   },
   {
     id: 'asic',
@@ -377,7 +377,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Technology',
     difficulty: 'Beginner',
     tags: ['fee', 'ethereum', 'transaction'],
-    examples: ['Sending ETH costs gas', 'Smart contract interactions require gas', 'Gas prices vary by network congestion']
+    examples: ['Simple ETH transfer: 21,000 gas × 20 gwei = $2.50 fee', 'Uniswap token swap: 150,000 gas × 50 gwei = $18 fee', 'NFT minting during high congestion: 200,000 gas × 100 gwei = $60 fee']
   },
   {
     id: 'genesis-block',
@@ -485,7 +485,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Trading',
     difficulty: 'Intermediate',
     tags: ['trading', 'volume', 'market'],
-    examples: ['High liquidity on major exchanges', 'Low liquidity for small-cap tokens']
+    examples: ['BTC/USDT pair with $500M daily volume allowing instant $100k trades', 'Small altcoin with $50k daily volume where $10k order moves price 5%', 'DEX pool with $2M TVL providing smooth swaps under $20k']
   },
   {
     id: 'market-cap',
@@ -494,7 +494,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Trading',
     difficulty: 'Beginner',
     tags: ['valuation', 'price', 'supply'],
-    examples: ['Bitcoin market cap', 'Total crypto market cap', 'Project ranking by market cap']
+    examples: ['Bitcoin: $40k price × 19.5M supply = $780B market cap', 'Ethereum: $2,500 price × 120M supply = $300B market cap', 'New token: $0.10 price × 1B supply = $100M market cap ranks #200']
   },
   {
     id: 'mempool',
@@ -665,7 +665,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'DeFi',
     difficulty: 'Intermediate',
     tags: ['rewards', 'network security', 'passive income'],
-    examples: ['Ethereum staking', 'Cardano delegation', 'Polkadot nomination']
+    examples: ['Depositing 32 ETH to become an Ethereum validator earning ~4% annually', 'Staking 100 ADA on Cardano through a pool for 5% rewards', 'Locking 50 DOT for 28 days on Polkadot earning 12% APY']
   },
   {
     id: 'tokenomics',
@@ -701,7 +701,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'Trading',
     difficulty: 'Beginner',
     tags: ['large holder', 'market influence', 'big investor'],
-    examples: ['Bitcoin whales', 'Whale watching tools', 'Whale movement alerts']
+    examples: ['Wallet holding 10,000+ BTC ($400M+ at $40k price) moving coins causes market alerts', 'Ethereum whale transferring 50,000 ETH ($100M) between exchanges', 'Single transaction of 1M USDC moving altcoin price 15% due to low liquidity']
   },
   {
     id: 'whitepaper',
@@ -719,7 +719,7 @@ export const cryptoTerms: CryptoTerm[] = [
     category: 'DeFi',
     difficulty: 'Advanced',
     tags: ['lending', 'rewards', 'DeFi'],
-    examples: ['Compound farming', 'Uniswap LP tokens', 'Liquidity mining programs']
+    examples: ['Providing $10,000 USDC to Compound lending pool earning 3% APY plus COMP tokens', 'Adding $5,000 ETH/USDC to Uniswap V3 earning 0.3% fees + LP rewards', 'Farming CAKE tokens by staking BNB-BUSD LP tokens on PancakeSwap']
   },
   
   // Additional Terms for 1000+ collection
@@ -841,7 +841,8 @@ export const cryptoTerms: CryptoTerm[] = [
     definition: 'The temporary loss of funds experienced by liquidity providers due to volatility in a trading pair.',
     category: 'DeFi',
     difficulty: 'Advanced',
-    tags: ['liquidity', 'loss', 'volatility']
+    tags: ['liquidity', 'loss', 'volatility'],
+    examples: ['Providing $10k ETH/USDC LP when ETH=$2000, losing $500 when ETH rises to $2500 vs just holding ETH', 'Stable pair USDC/DAI with minimal impermanent loss earning 3% fees', 'Volatile pair experiences 15% impermanent loss during 50% price swing']
   },
   {
     id: 'layer-1',
@@ -1001,7 +1002,8 @@ export const cryptoTerms: CryptoTerm[] = [
     definition: 'The difference between expected and actual transaction prices due to market movement during execution.',
     category: 'Trading',
     difficulty: 'Intermediate',
-    tags: ['price difference', 'execution', 'market']
+    tags: ['price difference', 'execution', 'market'],
+    examples: ['Setting 1% slippage tolerance: $1000 ETH order executes at $990-$1010', 'High slippage on small DEX: $5k order moves price 8% on low liquidity pair', 'Front-running causes 3% slippage on $50k Uniswap trade during volatile period']
   },
   {
     id: 'smart-contract',
@@ -1856,15 +1858,6 @@ export const newCoinbaseTerms: CryptoTerm[] = [
     examples: ['Bored Ape floor price', 'CryptoPunk floor', 'Collection trading activity']
   },
   {
-    id: 'impermanent-loss',
-    term: 'Impermanent Loss',
-    definition: 'The potential loss of value when providing liquidity to a DeFi pool due to price changes in the underlying assets.',
-    category: 'DeFi',
-    difficulty: 'Advanced',
-    tags: ['liquidity', 'loss', 'amm', 'risk'],
-    examples: ['Uniswap LP losses', 'Stablecoin pairs', 'Impermanent vs permanent loss']
-  },
-  {
     id: 'real-world-assets',
     term: 'Real-World Assets (RWA)',
     definition: 'Tangible assets from the physical world that are tokenized and represented on blockchain networks.',
@@ -2063,24 +2056,6 @@ export const v0WebsiteTerms: CryptoTerm[] = [
     difficulty: 'Intermediate',
     tags: ['voting', 'dao', 'governance'],
     examples: ['UNI (Uniswap)', 'COMP (Compound)', 'MKR (MakerDAO)']
-  },
-  {
-    id: 'slippage',
-    term: 'Slippage',
-    definition: 'The difference between the expected price of a trade and the actual executed price, often occurring in volatile markets.',
-    category: 'Trading',
-    difficulty: 'Intermediate',
-    tags: ['trading', 'liquidity', 'price-impact'],
-    examples: ['DEX trading slippage', 'Large order market impact', 'Low liquidity pairs']
-  },
-  {
-    id: 'impermanent-loss',
-    term: 'Impermanent Loss',
-    definition: 'The temporary loss of funds experienced by liquidity providers due to volatility in trading pairs.',
-    category: 'DeFi',
-    difficulty: 'Advanced',
-    tags: ['liquidity', 'amm', 'risk'],
-    examples: ['Uniswap liquidity provision', 'AMM pool participation', 'Yield farming risks']
   },
   {
     id: 'ico',
