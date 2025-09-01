@@ -127,7 +127,7 @@ const Index = () => {
             </div>
             
             {/* Search Bar */}
-            <div className="flex-1 max-w-2xl mx-auto relative">
+            <div className="flex-1 max-w-xl mx-auto relative">
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
                 <Input
