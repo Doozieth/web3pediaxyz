@@ -526,9 +526,36 @@ const Index = () => {
                         </Button>
                       </div>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed text-left cursor-text select-text">
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left cursor-text select-text mb-3">
                       {term.definition}
                     </p>
+                    {/* Tags in main preview */}
+                    {term.tags && term.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {term.tags.slice(0, 4).map((tag) => (
+                          <Badge 
+                            key={tag} 
+                            variant="outline" 
+                            className="text-xs px-2 py-0.5 bg-muted/20 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSearchTerm(tag);
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                        {term.tags.length > 4 && (
+                          <Badge 
+                            variant="outline" 
+                            className="text-xs px-2 py-0.5 bg-muted/10 text-muted-foreground border-muted"
+                          >
+                            +{term.tags.length - 4}
+                          </Badge>
+                        )}
+                      </div>
+                    )}
                   </CardHeader>
                 </AccordionTrigger>
                 
