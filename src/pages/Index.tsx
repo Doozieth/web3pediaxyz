@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown, Moon, Sun, Bookmark, Puzzle } from "lucide-react";
+import { Search, BookOpen, TrendingUp, Users, Globe, Filter, ChevronDown, ArrowUpDown, Moon, Sun, Bookmark, Puzzle, Link } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -631,7 +631,7 @@ const Index = () => {
                     {term.tags && term.tags.length > 0 && (
                       <div>
                         <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-                          <Globe className="h-4 w-4 text-primary" />
+                          <Link className="h-4 w-4 text-primary" />
                           Related Terms
                         </h4>
                         <div className="flex flex-wrap gap-2">
