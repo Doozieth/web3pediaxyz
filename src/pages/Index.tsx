@@ -19,6 +19,7 @@ const Index = () => {
   const [isSearchBarSticky, setIsSearchBarSticky] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [bookmarkedTerms, setBookmarkedTerms] = useState<string[]>([]);
+  const [showBookmarks, setShowBookmarks] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   // Load bookmarks from localStorage on mount
@@ -140,19 +141,63 @@ const Index = () => {
       <header ref={headerRef} className="relative text-center pt-16 pb-5 px-4 border-b border-border/10">
         {/* Top right controls */}
         <div className="absolute top-4 right-4 flex gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent"
-            aria-label="View bookmarks"
-          >
-            <Bookmark className="h-5 w-5" />
-            {bookmarkedTerms.length > 0 && (
-              <div className="absolute -top-1 -right-1 h-4 w-4 bg-primary rounded-full text-xs text-primary-foreground flex items-center justify-center">
-                {bookmarkedTerms.length}
-              </div>
-            )}
-          </Button>
+          <DropdownMenu open={showBookmarks} onOpenChange={setShowBookmarks}>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground bg-transparent border-0 shadow-none hover:bg-transparent relative"
+                aria-label="View bookmarks"
+              >
+                <Bookmark className="h-5 w-5" />
+                {bookmarkedTerms.length > 0 && (
+                  <div className="absolute -top-1 -right-1 h-4 w-4 bg-primary rounded-full text-xs text-primary-foreground flex items-center justify-center">
+                    {bookmarkedTerms.length}
+                  </div>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-80 bg-background border border-border/20 shadow-lg z-50">
+              <DropdownMenuLabel>Bookmarked Terms</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {bookmarkedTerms.length === 0 ? (
+                <div className="p-4 text-center text-muted-foreground">
+                  <p className="text-sm">No bookmarks yet</p>
+                  <p className="text-xs mt-1">Click the bookmark icon on any term to save it</p>
+                </div>
+              ) : (
+                <>
+                  {bookmarkedTerms.slice(0, 5).map((termId) => {
+                    const term = cryptoTerms.find(t => t.id === termId);
+                    return term ? (
+                      <DropdownMenuItem
+                        key={termId}
+                        className="flex-col items-start p-3 space-y-1 hover:bg-muted/50"
+                        onClick={() => {
+                          setShowBookmarks(false);
+                          const element = document.querySelector(`[value="${termId}"]`);
+                          element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                      >
+                        <div className="font-medium text-sm">{term.term}</div>
+                        <div className="text-xs text-muted-foreground line-clamp-2">
+                          {term.definition}
+                        </div>
+                      </DropdownMenuItem>
+                    ) : null;
+                  })}
+                  {bookmarkedTerms.length > 5 && (
+                    <DropdownMenuSeparator />
+                  )}
+                  {bookmarkedTerms.length > 5 && (
+                    <div className="p-2 text-center text-xs text-muted-foreground">
+                      +{bookmarkedTerms.length - 5} more bookmarks
+                    </div>
+                  )}
+                </>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button
             variant="ghost"
             size="sm"
