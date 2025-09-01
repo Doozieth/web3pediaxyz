@@ -1191,6 +1191,366 @@ export const cryptoTerms: CryptoTerm[] = [
     difficulty: 'Beginner',
     tags: ['exclusive knowledge', 'understanding', 'superiority'],
     examples: ['Bitcoin is the future. Few.', 'DeFi will replace banks. Few understand.']
+  },
+  {
+    id: 'ngmi',
+    term: 'NGMI',
+    definition: 'Stands for "Not Gonna Make It" - used to describe poor decision-making or behavior that could lead to losses in crypto.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['pessimism', 'warning', 'behavior'],
+    examples: ['Selling at the bottom? NGMI', 'FOMOing into every pump is NGMI behavior']
+  },
+  {
+    id: 'based',
+    term: 'Based',
+    definition: 'Expressing approval or agreement, often used to describe someone or something that is authentic, cool, or admirable in crypto culture.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['approval', 'authentic', 'slang'],
+    examples: ['That analysis is based', 'Based take on the market']
+  },
+  {
+    id: 'lfg',
+    term: 'LFG',
+    definition: 'Stands for "Let\'s F***ing Go" - an expression of excitement and enthusiasm, often used when prices are pumping or good news drops.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['excitement', 'enthusiasm', 'celebration'],
+    examples: ['Bitcoin to 100k LFG!', 'New partnership announcement LFG!']
+  },
+  {
+    id: 'cope',
+    term: 'Cope',
+    definition: 'To deal with losses or bad trades, often used when someone is making excuses or being overly optimistic about a failing investment.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['psychology', 'denial', 'losses'],
+    examples: ['Still holding that dead token? Cope harder', 'That\'s some serious cope right there']
+  },
+  {
+    id: 'hopium',
+    term: 'Hopium',
+    definition: 'Blind hope or unrealistic optimism about crypto investments, often ignoring negative signs or fundamentals.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['hope', 'optimism', 'unrealistic'],
+    examples: ['Injecting hopium about this altcoin', 'Pure hopium that it will recover']
+  },
+  {
+    id: 'copium',
+    term: 'Copium',
+    definition: 'A combination of "cope" and "opium" - used to describe someone who is in denial about their losses or bad investments.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['denial', 'losses', 'psychology'],
+    examples: ['Smoking copium about that rugpull', 'Heavy copium after buying the top']
+  },
+  {
+    id: 'chad',
+    term: 'Chad',
+    definition: 'Someone who makes successful trades or investments, often used to describe confident and successful crypto traders.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['success', 'confident', 'winner'],
+    examples: ['That trader is a total chad', 'Chad move buying the dip']
+  },
+  {
+    id: 'virgin',
+    term: 'Virgin',
+    definition: 'The opposite of chad, used to describe someone who makes poor trading decisions or lacks experience.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['inexperienced', 'poor decisions', 'opposite of chad'],
+    examples: ['Virgin move selling at a loss', 'Chad vs Virgin meme format']
+  },
+  {
+    id: 'simp',
+    term: 'Simp',
+    definition: 'Someone who shows excessive devotion to a particular crypto project or influencer, often ignoring red flags.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['devotion', 'excessive', 'influencer'],
+    examples: ['Stop simping for that project', 'Classic simp behavior']
+  },
+  {
+    id: 'maxi',
+    term: 'Maxi',
+    definition: 'A maximalist who believes strongly in one particular cryptocurrency above all others, most commonly Bitcoin.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['maximalist', 'devotion', 'belief'],
+    examples: ['Bitcoin maxi', 'Ethereum maxi defending their chain']
+  },
+  {
+    id: 'nocoiner',
+    term: 'No-coiner',
+    definition: 'Someone who doesn\'t own any cryptocurrency and is often skeptical or critical of crypto in general.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['skeptical', 'no crypto', 'critical'],
+    examples: ['Another no-coiner FUD article', 'Converting no-coiners to crypto']
+  },
+  {
+    id: 'rekt',
+    term: 'Rekt',
+    definition: 'Slang for "wrecked" - suffering significant losses, often from bad trades or liquidations.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['losses', 'wrecked', 'liquidation'],
+    examples: ['Got rekt on that leverage trade', 'Absolutely rekt by the market']
+  },
+  {
+    id: 'when-lambo',
+    term: 'When Lambo?',
+    definition: 'A meme phrase asking when crypto gains will be enough to afford a Lamborghini, symbolizing wealth from crypto.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['meme', 'wealth', 'gains'],
+    examples: ['Portfolio up 1000%, when Lambo?', 'Classic crypto meme']
+  },
+  {
+    id: 'have-fun-staying-poor',
+    term: 'Have Fun Staying Poor (HFSP)',
+    definition: 'A dismissive phrase used toward crypto skeptics, implying they\'ll miss out on wealth by not investing.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['dismissive', 'skeptics', 'wealth'],
+    examples: ['Don\'t buy Bitcoin? HFSP', 'Classic response to no-coiners']
+  },
+  {
+    id: 'probably-nothing',
+    term: 'Probably Nothing',
+    definition: 'Sarcastic phrase used when sharing potentially significant crypto news or developments that others might dismiss.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['sarcasm', 'significant', 'news'],
+    examples: ['Major company adopts Bitcoin, probably nothing', 'New DeFi protocol launches, probably nothing']
+  },
+  {
+    id: 'this-is-fine',
+    term: 'This is Fine',
+    definition: 'Meme phrase used during market crashes or bad news, pretending everything is okay when it clearly isn\'t.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['meme', 'denial', 'crash'],
+    examples: ['Portfolio down 90%, this is fine', 'Market crashing but this is fine']
+  },
+  {
+    id: 'number-go-up',
+    term: 'Number Go Up (NGU)',
+    definition: 'Simple phrase describing the desire or expectation for cryptocurrency prices to increase.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['price', 'increase', 'simple'],
+    examples: ['NGU technology', 'Just want number go up']
+  },
+  {
+    id: 'exit-liquidity',
+    term: 'Exit Liquidity',
+    definition: 'Newer investors who buy at high prices, providing liquidity for early investors to sell and exit profitably.',
+    category: 'Social',
+    difficulty: 'Intermediate',
+    tags: ['liquidity', 'exit', 'new investors'],
+    examples: ['Retail became exit liquidity', 'Don\'t be the exit liquidity']
+  },
+  {
+    id: 'anon',
+    term: 'Anon',
+    definition: 'Short for anonymous, commonly used to address people in crypto communities, especially on Twitter and Discord.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['anonymous', 'address', 'community'],
+    examples: ['Good morning anon', 'Thanks for the alpha, anon']
+  },
+  {
+    id: 'fren',
+    term: 'Fren',
+    definition: 'Intentional misspelling of "friend" used affectionately in crypto communities to address fellow community members.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['friend', 'community', 'affectionate'],
+    examples: ['Hello fren', 'Thanks for the help, fren']
+  },
+  {
+    id: 'degen',
+    term: 'Degen',
+    definition: 'Short for degenerate - someone who makes high-risk, often irrational crypto trades or investments.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['high-risk', 'irrational', 'trading'],
+    examples: ['Total degen move', 'Degen trading on 100x leverage']
+  },
+  {
+    id: 'up-only',
+    term: 'Up Only',
+    definition: 'Expressing the belief or hope that prices will only go up, often used ironically during dumps.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['optimism', 'prices', 'ironic'],
+    examples: ['Bitcoin up only!', 'Saying up only while everything dumps']
+  },
+  {
+    id: 'send-it',
+    term: 'Send It',
+    definition: 'Encouraging someone to make a bold or risky crypto trade or investment decision.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['encouragement', 'bold', 'risky'],
+    examples: ['100x leverage? Send it!', 'YOLO into that altcoin, send it']
+  },
+  {
+    id: 'touch-grass',
+    term: 'Touch Grass',
+    definition: 'Telling someone to go outside and disconnect from crypto charts and social media for their mental health.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['mental health', 'outside', 'disconnect'],
+    examples: ['Been staring at charts for 12 hours, time to touch grass', 'You need to touch grass']
+  },
+  {
+    id: 'cope-and-seethe',
+    term: 'Cope and Seethe',
+    definition: 'Telling someone who is angry about losses or bad trades to deal with their emotions and anger.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['anger', 'emotions', 'losses'],
+    examples: ['Portfolio down 80%? Cope and seethe', 'Missed the pump? Cope and seethe']
+  },
+  {
+    id: 'sus',
+    term: 'Sus',
+    definition: 'Short for suspicious - used to describe questionable crypto projects, trades, or behavior.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['suspicious', 'questionable', 'behavior'],
+    examples: ['That new token looks sus', 'Sus trading volume on that exchange']
+  },
+  {
+    id: 'no-cap',
+    term: 'No Cap',
+    definition: 'Meaning no lie or for real, used to emphasize truthfulness about crypto predictions or statements.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['truthful', 'no lie', 'emphasis'],
+    examples: ['Bitcoin to 100k no cap', 'This project is legit no cap']
+  },
+  {
+    id: 'slaps',
+    term: 'Slaps',
+    definition: 'Something that is really good or impressive, often used to describe good crypto trades or projects.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['good', 'impressive', 'quality'],
+    examples: ['That trading strategy slaps', 'This new NFT collection slaps']
+  },
+  {
+    id: 'mid',
+    term: 'Mid',
+    definition: 'Mediocre or average, used to describe crypto projects or investments that aren\'t particularly impressive.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['mediocre', 'average', 'unimpressive'],
+    examples: ['That token is mid', 'Another mid NFT collection']
+  },
+  {
+    id: 'smol',
+    term: 'Smol',
+    definition: 'Intentional cute misspelling of "small", often used to describe small crypto bags or positions.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['small', 'cute', 'position'],
+    examples: ['Just a smol bag of ETH', 'Smol position but hodling']
+  },
+  {
+    id: 'comfy',
+    term: 'Comfy',
+    definition: 'Feeling confident and relaxed about your crypto holdings, not worried about short-term price movements.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['confident', 'relaxed', 'holdings'],
+    examples: ['Staying comfy with my Bitcoin stack', 'Comfy holding through the dip']
+  },
+  {
+    id: 'alpha',
+    term: 'Alpha',
+    definition: 'Insider information or early insights about crypto projects that could lead to profitable investments.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['information', 'insider', 'profitable'],
+    examples: ['Got some alpha on that new token', 'Sharing alpha with the community']
+  },
+  {
+    id: 'rotate',
+    term: 'Rotate',
+    definition: 'Moving money from one cryptocurrency or sector to another based on market trends or opportunities.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['move money', 'trends', 'opportunities'],
+    examples: ['Time to rotate from Bitcoin to altcoins', 'Rotating into DeFi tokens']
+  },
+  {
+    id: 'bag',
+    term: 'Bag',
+    definition: 'A crypto holding or position, often used to describe the amount of a particular cryptocurrency someone owns.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['holding', 'position', 'amount'],
+    examples: ['Heavy bag of LINK', 'Small bag of that altcoin']
+  },
+  {
+    id: 'bag-holder',
+    term: 'Bag Holder',
+    definition: 'Someone stuck holding a cryptocurrency that has significantly decreased in value.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['stuck', 'decreased value', 'loss'],
+    examples: ['Became a bag holder after the crash', 'Don\'t want to be a bag holder']
+  },
+  {
+    id: 'right-click-save',
+    term: 'Right-click Save',
+    definition: 'Mocking NFTs by suggesting you can just save the image instead of buying the NFT.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['mocking', 'NFT', 'save image'],
+    examples: ['Just right-click save that NFT', 'Why buy when you can right-click save?']
+  },
+  {
+    id: 'ponzi',
+    term: 'Ponzi',
+    definition: 'Accusation that a crypto project is a Ponzi scheme that pays returns using new investors\' money.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['accusation', 'scheme', 'fraud'],
+    examples: ['That yield farming protocol is a ponzi', 'Calling out ponzi projects']
+  },
+  {
+    id: 'safemoon',
+    term: 'Safemoon',
+    definition: 'Used mockingly to describe sketchy altcoins with "safe" or "moon" in their names that often turn out to be scams.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['mocking', 'sketchy', 'scam'],
+    examples: ['Another Safemoon copycat', 'Avoid those Safemoon clones']
+  },
+  {
+    id: 'gigabrain',
+    term: 'Gigabrain',
+    definition: 'Someone with exceptional intelligence or insight in crypto, making consistently smart decisions.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['intelligence', 'insight', 'smart'],
+    examples: ['That analyst is gigabrain', 'Gigabrain move selling before the crash']
+  },
+  {
+    id: 'smoothbrain',
+    term: 'Smoothbrain',
+    definition: 'The opposite of gigabrain - someone who makes poor or unintelligent crypto decisions.',
+    category: 'Social',
+    difficulty: 'Beginner',
+    tags: ['poor decisions', 'unintelligent', 'opposite of gigabrain'],
+    examples: ['Smoothbrain move buying the top', 'That was peak smoothbrain behavior']
   }
 ];
 
