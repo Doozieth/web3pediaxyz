@@ -70,7 +70,7 @@ const Index = () => {
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
         
         {/* Search Bar with Filter */}
-        <div className="max-w-2xl mx-auto relative">
+        <div className="max-w-2xl mx-auto relative">{/* matches description width */}
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 z-10" />
           <Input
             type="text"
