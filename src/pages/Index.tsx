@@ -592,29 +592,38 @@ const Index = () => {
                             {term.category}
                           </Badge>
                           {term.difficulty && (
-                            <div className="flex items-center gap-0.5">
-                              {term.difficulty === 'Beginner' && (
-                                <>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                                </>
-                              )}
-                              {term.difficulty === 'Intermediate' && (
-                                <>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                                </>
-                              )}
-                              {term.difficulty === 'Advanced' && (
-                                <>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                                </>
-                              )}
-                            </div>
+                            <Badge
+                              variant="outline"
+                              className="text-xs px-2 py-1 bg-transparent border-transparent text-muted-foreground hover:border-primary hover:text-primary transition-colors cursor-pointer h-6 flex items-center"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDifficultyToggle(term.difficulty!);
+                              }}
+                            >
+                              <div className="flex items-center gap-0.5">
+                                {term.difficulty === 'Beginner' && (
+                                  <>
+                                    <div className="w-3 h-2 bg-green-500 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
+                                  </>
+                                )}
+                                {term.difficulty === 'Intermediate' && (
+                                  <>
+                                    <div className="w-3 h-2 bg-yellow-500 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-yellow-500 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-muted/30 rounded-full"></div>
+                                  </>
+                                )}
+                                {term.difficulty === 'Advanced' && (
+                                  <>
+                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
+                                    <div className="w-3 h-2 bg-red-500 rounded-full"></div>
+                                  </>
+                                )}
+                              </div>
+                            </Badge>
                           )}
                         </div>
                         <Button
