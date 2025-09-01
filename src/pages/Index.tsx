@@ -526,7 +526,7 @@ const Index = () => {
                         </Button>
                       </div>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed text-left">
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left cursor-text select-text">
                       {term.definition}
                     </p>
                   </CardHeader>
