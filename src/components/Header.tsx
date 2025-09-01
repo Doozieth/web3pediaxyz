@@ -8,7 +8,7 @@ const Header = () => {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <BookOpen className="h-8 w-8 text-primary" />
-          <h1 className="text-xl font-bold text-foreground">CryptoGuide</h1>
+          <h1 className="text-xl font-bold text-foreground">CryptoGlossary</h1>
         </div>
         
         <div className="hidden md:flex items-center space-x-4 flex-1 max-w-md mx-8">
@@ -22,10 +22,10 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex items-center space-x-6">
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Learning</a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Tools</a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Exchanges</a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">News</a>
+          <a href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
+          <a href="/glossary" className="text-muted-foreground hover:text-primary transition-colors">Glossary</a>
+          <a href="/glossary" className="text-muted-foreground hover:text-primary transition-colors">Categories</a>
+          <a href="/glossary" className="text-muted-foreground hover:text-primary transition-colors">Search</a>
         </nav>
 
         <Button variant="ghost" size="icon" className="md:hidden">
