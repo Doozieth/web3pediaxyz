@@ -159,23 +159,23 @@ const Index = () => {
                           <span className="text-xs flex items-center gap-0.5">
                             {term.difficulty === 'Beginner' && (
                               <>
-                                <span className="text-primary text-[6px]">●</span>
-                                <span className="text-primary/20 text-[6px]">●</span>
-                                <span className="text-primary/20 text-[6px]">●</span>
+                                <span className="text-primary text-[8px]">█</span>
+                                <span className="text-primary/20 text-[8px]">█</span>
+                                <span className="text-primary/20 text-[8px]">█</span>
                               </>
                             )}
                             {term.difficulty === 'Intermediate' && (
                               <>
-                                <span className="text-primary text-[6px]">●</span>
-                                <span className="text-primary text-[6px]">●</span>
-                                <span className="text-primary/20 text-[6px]">●</span>
+                                <span className="text-primary text-[8px]">█</span>
+                                <span className="text-primary text-[8px]">█</span>
+                                <span className="text-primary/20 text-[8px]">█</span>
                               </>
                             )}
                             {term.difficulty === 'Advanced' && (
                               <>
-                                <span className="text-primary text-[6px]">●</span>
-                                <span className="text-primary text-[6px]">●</span>
-                                <span className="text-primary text-[6px]">●</span>
+                                <span className="text-primary text-[8px]">█</span>
+                                <span className="text-primary text-[8px]">█</span>
+                                <span className="text-primary text-[8px]">█</span>
                               </>
                             )}
                           </span>
