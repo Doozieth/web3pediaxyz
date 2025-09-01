@@ -21,6 +21,7 @@ const Index = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [bookmarkedTerms, setBookmarkedTerms] = useState<string[]>([]);
   const [showBookmarks, setShowBookmarks] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const headerRef = useRef<HTMLElement>(null);
 
   // Load bookmarks from localStorage on mount
@@ -483,7 +484,12 @@ const Index = () => {
 
       {/* Terms List */}
       <main className={`container mx-auto px-4 transition-all duration-700 ease-out ${isSearchBarSticky ? 'pt-20' : 'pt-12'}`}>
-        <Accordion type="multiple" className="max-w-4xl mx-auto space-y-4">
+        <Accordion 
+          type="multiple" 
+          className="max-w-4xl mx-auto space-y-4"
+          value={expandedItems}
+          onValueChange={setExpandedItems}
+        >
           {filteredTerms.map((term, index) => (
             <AccordionItem
               key={term.id}
@@ -545,9 +551,35 @@ const Index = () => {
                         </Button>
                       </div>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed text-left cursor-text select-text">
+                    <p className="text-muted-foreground text-sm leading-relaxed text-left cursor-text select-text mb-3">
                       {term.definition}
                     </p>
+                    {/* Tags in main preview - only show when NOT expanded */}
+                    {!expandedItems.includes(term.id) && term.tags && term.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {term.tags.slice(0, 4).map((tag) => (
+                          <Badge 
+                            key={tag} 
+                            variant="outline" 
+                            className="text-xs px-2 py-0.5 bg-muted/20 text-muted-foreground border-muted hover:bg-primary/10 hover:text-primary hover:border-primary/20 transition-colors cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleTagToggle(tag);
+                            }}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                        {term.tags.length > 4 && (
+                          <Badge 
+                            variant="outline" 
+                            className="text-xs px-2 py-0.5 bg-muted/10 text-muted-foreground border-muted"
+                          >
+                            +{term.tags.length - 4}
+                          </Badge>
+                        )}
+                      </div>
+                    )}
                   </CardHeader>
                 </AccordionTrigger>
                 
