@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { allCryptoTerms as cryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
+import { allCryptoTerms, categories, difficulties } from "@/data/cryptoTerms";
 
 // Category color mapping - text only with transparent background
 const getCategoryColor = (category: string) => {
@@ -93,7 +93,7 @@ const Index = () => {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredTerms, setFilteredTerms] = useState(cryptoTerms);
+  const [filteredTerms, setFilteredTerms] = useState(allCryptoTerms);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -128,7 +128,7 @@ const Index = () => {
   };
 
   useEffect(() => {
-    let filtered = cryptoTerms;
+    let filtered = allCryptoTerms;
     
     // Filter by search term
     if (searchTerm.trim() !== "") {
@@ -257,7 +257,7 @@ const Index = () => {
     }
   };
 
-  const totalTerms = cryptoTerms.length;
+  const totalTerms = allCryptoTerms.length;
 
   return (
     <div className="min-h-screen bg-background">
@@ -292,7 +292,7 @@ const Index = () => {
               ) : (
                 <>
                   {bookmarkedTerms.slice(0, 5).map((termId) => {
-                    const term = cryptoTerms.find(t => t.id === termId);
+                    const term = allCryptoTerms.find(t => t.id === termId);
                     return term ? (
                       <DropdownMenuItem
                         key={termId}
