@@ -130,13 +130,14 @@ const Index = () => {
   useEffect(() => {
     let filtered = allCryptoTerms;
     
-    // Filter by search term
+    // Filter by search term - immediate filtering
     if (searchTerm.trim() !== "") {
+      const searchLower = searchTerm.toLowerCase();
       filtered = filtered.filter(
         (term) =>
-          term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          term.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+          term.term.toLowerCase().includes(searchLower) ||
+          term.definition.toLowerCase().includes(searchLower) ||
+          (term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower)))
       );
     }
     
@@ -369,8 +370,17 @@ const Index = () => {
                   type="text"
                   placeholder="Search crypto terms"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className={`pl-12 h-12 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-500 focus:ring-2 focus:ring-primary/50 rounded-xl w-full ${isSearchBarSticky ? 'pr-4' : 'pr-12'}`}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setSearchTerm(value);
+                    // Clear any existing filters when searching to show immediate results
+                    if (value.trim() && (selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0)) {
+                      setSelectedCategories([]);
+                      setSelectedDifficulties([]);
+                      setSelectedTags([]);
+                    }
+                  }}
+                  className={`pl-12 h-12 text-lg border border-border/20 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 focus:ring-2 focus:ring-primary/50 rounded-xl w-full ${isSearchBarSticky ? 'pr-4' : 'pr-12'}`}
                 />
                  
                 {/* Sort and Filter Icons inside search bar - animate out when sticky */}
