@@ -128,17 +128,21 @@ const Index = () => {
   };
 
   useEffect(() => {
+    console.log('Filtering with searchTerm:', searchTerm, 'Total terms:', allCryptoTerms.length);
     let filtered = allCryptoTerms;
     
     // Filter by search term - immediate filtering
     if (searchTerm.trim() !== "") {
       const searchLower = searchTerm.toLowerCase();
       filtered = filtered.filter(
-        (term) =>
-          term.term.toLowerCase().includes(searchLower) ||
-          term.definition.toLowerCase().includes(searchLower) ||
-          (term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower)))
+        (term) => {
+          const matchesTerm = term.term.toLowerCase().includes(searchLower);
+          const matchesDefinition = term.definition.toLowerCase().includes(searchLower);
+          const matchesTags = term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower));
+          return matchesTerm || matchesDefinition || matchesTags;
+        }
       );
+      console.log('After search filter:', filtered.length, 'terms found');
     }
     
     // Filter by categories
@@ -184,6 +188,7 @@ const Index = () => {
       }
     });
     
+    console.log('Final filtered terms:', sorted.length);
     setFilteredTerms(sorted);
   }, [searchTerm, selectedCategories, selectedDifficulties, selectedTags, sortBy]);
 
