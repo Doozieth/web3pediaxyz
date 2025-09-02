@@ -1205,15 +1205,6 @@ export const cryptoTerms: CryptoTerm[] = [
     examples: ['Bitcoin to 100k LFG!', 'New partnership announcement LFG!']
   },
   {
-    id: 'cope',
-    term: 'Cope',
-    definition: 'To deal with losses or bad trades, often used when someone is making excuses or being overly optimistic about a failing investment.',
-    category: 'Social',
-    difficulty: 'Beginner',
-    tags: ['psychology', 'denial', 'losses'],
-    examples: ['Still holding that dead token? Cope harder', 'That\'s some serious cope right there']
-  },
-  {
     id: 'hopium',
     term: 'Hopium',
     definition: 'Blind hope or unrealistic optimism about crypto investments, often ignoring negative signs or fundamentals.',
@@ -1455,15 +1446,6 @@ export const cryptoTerms: CryptoTerm[] = [
     difficulty: 'Beginner',
     tags: ['confident', 'relaxed', 'holdings'],
     examples: ['Staying comfy with my Bitcoin stack', 'Comfy holding through the dip']
-  },
-  {
-    id: 'alpha',
-    term: 'Alpha',
-    definition: 'Insider information or early insights about crypto projects that could lead to profitable investments.',
-    category: 'Social',
-    difficulty: 'Beginner',
-    tags: ['information', 'insider', 'profitable'],
-    examples: ['Got some alpha on that new token', 'Sharing alpha with the community']
   },
   {
     id: 'rotate',
