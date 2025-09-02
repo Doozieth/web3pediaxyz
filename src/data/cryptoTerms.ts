@@ -1038,14 +1038,6 @@ export const cryptoTerms: CryptoTerm[] = [
     tags: ['testing', 'development', 'sandbox']
   },
   {
-    id: 'tokenomics',
-    term: 'Tokenomics',
-    definition: 'The economic model and structure surrounding a cryptocurrency token, including supply and distribution.',
-    category: 'Fundamentals',
-    difficulty: 'Intermediate',
-    tags: ['economics', 'supply', 'distribution']
-  },
-  {
     id: 'total-value-locked',
     term: 'Total Value Locked (TVL)',
     definition: 'The total amount of assets deposited in a DeFi protocol or platform.',
@@ -2020,15 +2012,6 @@ export const v0WebsiteTerms: CryptoTerm[] = [
     difficulty: 'Advanced',
     tags: ['external-data', 'smart-contracts', 'connectivity'],
     examples: ['Chainlink price feeds', 'Weather data oracles', 'Sports betting oracles']
-  },
-  {
-    id: 'tokenomics',
-    term: 'Tokenomics',
-    definition: 'The economic model and structure of a cryptocurrency token, including supply, distribution, and utility.',
-    category: 'Finance',
-    difficulty: 'Intermediate',
-    tags: ['economics', 'token-design', 'utility'],
-    examples: ['Bitcoin\'s fixed supply', 'Ethereum\'s fee burning', 'Governance token distribution']
   },
   {
     id: 'governance-token',
