@@ -401,9 +401,12 @@ const Index = () => {
                   value={searchTerm}
                   onChange={(e) => {
                     const value = e.target.value;
+                    console.log("🎯 Search input changed to:", value);
                     setSearchTerm(value);
+                    
                     // Clear any existing filters when searching to show immediate results
                     if (value.trim() && (selectedCategories.length > 0 || selectedDifficulties.length > 0 || selectedTags.length > 0)) {
+                      console.log("🧹 Clearing other filters");
                       setSelectedCategories([]);
                       setSelectedDifficulties([]);
                       setSelectedTags([]);
