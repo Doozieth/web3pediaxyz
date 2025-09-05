@@ -127,35 +127,33 @@ const Index = () => {
     );
   };
 
-  useEffect(() => {
-    console.log('Filtering with searchTerm:', searchTerm, 'Total terms:', allCryptoTerms.length);
-    let filtered = allCryptoTerms;
+  // Filter terms function - completely rewritten for instant search
+  const filterTerms = () => {
+    let filtered = [...allCryptoTerms];
     
-    // Filter by search term - immediate filtering
-    if (searchTerm.trim() !== "") {
-      const searchLower = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (term) => {
-          const matchesTerm = term.term.toLowerCase().includes(searchLower);
-          const matchesDefinition = term.definition.toLowerCase().includes(searchLower);
-          const matchesTags = term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower));
-          return matchesTerm || matchesDefinition || matchesTags;
-        }
-      );
-      console.log('After search filter:', filtered.length, 'terms found');
+    // Search term filter (priority filter - applied first)
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase().trim();
+      filtered = filtered.filter(term => {
+        return (
+          term.term.toLowerCase().includes(searchLower) ||
+          term.definition.toLowerCase().includes(searchLower) ||
+          (term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower)))
+        );
+      });
     }
     
-    // Filter by categories
+    // Category filter
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(term => selectedCategories.includes(term.category));
     }
     
-    // Filter by difficulties
+    // Difficulty filter
     if (selectedDifficulties.length > 0) {
       filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
     }
     
-    // Filter by tags
+    // Tags filter
     if (selectedTags.length > 0) {
       filtered = filtered.filter(term => 
         term.tags && selectedTags.some(selectedTag => 
@@ -164,32 +162,37 @@ const Index = () => {
       );
     }
     
-    // Apply sorting
-    const sorted = [...filtered].sort((a, b) => {
-      switch (sortBy) {
-        case 'a-z':
-          return a.term.localeCompare(b.term);
-        case 'z-a':
-          return b.term.localeCompare(a.term);
-        case 'difficulty-asc':
-          const difficultyOrder = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
-          const aDiff = difficultyOrder[a.difficulty as keyof typeof difficultyOrder] || 0;
-          const bDiff = difficultyOrder[b.difficulty as keyof typeof difficultyOrder] || 0;
-          return aDiff - bDiff;
-        case 'difficulty-desc':
-          const difficultyOrderDesc = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
-          const aDiffDesc = difficultyOrderDesc[a.difficulty as keyof typeof difficultyOrderDesc] || 0;
-          const bDiffDesc = difficultyOrderDesc[b.difficulty as keyof typeof difficultyOrderDesc] || 0;
-          return bDiffDesc - aDiffDesc;
-        case 'category':
-          return a.category.localeCompare(b.category);
-        default:
-          return 0; // Keep original order
-      }
-    });
+    // Sorting
+    if (sortBy !== "default") {
+      filtered.sort((a, b) => {
+        switch (sortBy) {
+          case 'a-z':
+            return a.term.localeCompare(b.term);
+          case 'z-a':
+            return b.term.localeCompare(a.term);
+          case 'difficulty-asc':
+            const difficultyOrder = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
+            return (difficultyOrder[a.difficulty as keyof typeof difficultyOrder] || 0) - 
+                   (difficultyOrder[b.difficulty as keyof typeof difficultyOrder] || 0);
+          case 'difficulty-desc':
+            const difficultyOrderDesc = { 'Beginner': 1, 'Intermediate': 2, 'Advanced': 3 };
+            return (difficultyOrderDesc[b.difficulty as keyof typeof difficultyOrderDesc] || 0) - 
+                   (difficultyOrderDesc[a.difficulty as keyof typeof difficultyOrderDesc] || 0);
+          case 'category':
+            return a.category.localeCompare(b.category);
+          default:
+            return 0;
+        }
+      });
+    }
     
-    console.log('Final filtered terms:', sorted.length);
-    setFilteredTerms(sorted);
+    return filtered;
+  };
+
+  // Update filtered terms whenever filters change
+  useEffect(() => {
+    const filtered = filterTerms();
+    setFilteredTerms(filtered);
   }, [searchTerm, selectedCategories, selectedDifficulties, selectedTags, sortBy]);
 
   useEffect(() => {
