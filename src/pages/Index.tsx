@@ -130,27 +130,45 @@ const Index = () => {
   // Filter terms function - completely rewritten for instant search
   const filterTerms = () => {
     let filtered = [...allCryptoTerms];
+    console.log("🔍 Starting filter with:", { 
+      searchTerm: searchTerm, 
+      totalTerms: filtered.length,
+      selectedCategories: selectedCategories.length,
+      selectedDifficulties: selectedDifficulties.length,
+      selectedTags: selectedTags.length
+    });
     
     // Search term filter (priority filter - applied first)
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase().trim();
+      console.log("📝 Searching for:", searchLower);
+      
       filtered = filtered.filter(term => {
-        return (
-          term.term.toLowerCase().includes(searchLower) ||
-          term.definition.toLowerCase().includes(searchLower) ||
-          (term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower)))
-        );
+        const matchesTerm = term.term.toLowerCase().includes(searchLower);
+        const matchesDefinition = term.definition.toLowerCase().includes(searchLower);
+        const matchesTags = term.tags && term.tags.some(tag => tag.toLowerCase().includes(searchLower));
+        const matches = matchesTerm || matchesDefinition || matchesTags;
+        
+        if (matches) {
+          console.log("✅ Match found:", term.term);
+        }
+        
+        return matches;
       });
+      
+      console.log("🎯 After search filter:", filtered.length, "terms");
     }
     
     // Category filter
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(term => selectedCategories.includes(term.category));
+      console.log("📂 After category filter:", filtered.length, "terms");
     }
     
     // Difficulty filter
     if (selectedDifficulties.length > 0) {
       filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
+      console.log("⭐ After difficulty filter:", filtered.length, "terms");
     }
     
     // Tags filter
@@ -160,6 +178,7 @@ const Index = () => {
           term.tags.some(tag => tag.toLowerCase().includes(selectedTag.toLowerCase()))
         )
       );
+      console.log("🏷️ After tags filter:", filtered.length, "terms");
     }
     
     // Sorting
@@ -186,6 +205,7 @@ const Index = () => {
       });
     }
     
+    console.log("🎊 Final filtered result:", filtered.length, "terms");
     return filtered;
   };
 
@@ -193,6 +213,7 @@ const Index = () => {
   useEffect(() => {
     const filtered = filterTerms();
     setFilteredTerms(filtered);
+    console.log("🔄 Updated filteredTerms state with:", filtered.length, "terms");
   }, [searchTerm, selectedCategories, selectedDifficulties, selectedTags, sortBy]);
 
   useEffect(() => {
