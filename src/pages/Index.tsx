@@ -388,7 +388,7 @@ const Index = () => {
                   pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
                 }}
               >
-                <span className="font-semibold">web3pedia</span>
+                <span className="font-black">web3</span><span className="font-semibold">pedia</span>
               </Button>
             </div>
             
