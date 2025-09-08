@@ -376,17 +376,11 @@ const Index = () => {
           <div className="flex items-center gap-4">
             {/* Home Button - slides out from behind search bar to the left */}
             <div className="relative overflow-hidden">
-              <Button
+              <Button 
                 variant="ghost"
                 size="sm"
-                className="text-foreground whitespace-nowrap transition-all duration-100 hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent"
+                className="text-foreground whitespace-nowrap hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                style={{
-                  transform: `translateX(${(1 - scrollProgress) * 200}px)`,
-                  clipPath: `inset(0 ${100 - (scrollProgress * 100)}% 0 0)`,
-                  opacity: scrollProgress > 0.1 ? 1 : 0,
-                  pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
-                }}
               >
                 <span className="font-semibold font-space-grotesk">web3pedia</span>
               </Button>
