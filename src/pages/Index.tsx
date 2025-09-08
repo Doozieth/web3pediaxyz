@@ -379,7 +379,7 @@ const Index = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-foreground font-semibold whitespace-nowrap transition-all duration-100 hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent"
+                className="text-foreground whitespace-nowrap transition-all duration-100 hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 style={{
                   transform: `translateX(${(1 - scrollProgress) * 200}px)`,
@@ -388,7 +388,7 @@ const Index = () => {
                   pointerEvents: scrollProgress > 0.8 ? 'auto' : 'none'
                 }}
               >
-                web3pedia
+                <span className="font-black">web3</span><span className="font-semibold">pedia</span>
               </Button>
             </div>
             
