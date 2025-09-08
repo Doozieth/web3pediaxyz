@@ -364,7 +364,7 @@ const Index = () => {
           </Button>
         </div>
         
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4 whitespace-nowrap">
           <span className="font-black">web3</span><span className="font-semibold">pedia</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-1 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
