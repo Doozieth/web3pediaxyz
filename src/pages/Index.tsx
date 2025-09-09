@@ -164,21 +164,23 @@ const Index = () => {
     performSearch(value);
   };
   
-  // Apply other filters to already filtered results
+  // Apply filters and sorting
   useEffect(() => {
-    let filtered = [...filteredTerms];
+    // Start with base data (either search results or all terms)
+    let baseTerms = searchTerm.trim() ? filteredTerms : allTerms;
+    let filtered = [...baseTerms];
     
-    // Category filter
+    // Apply category filter
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(term => selectedCategories.includes(term.category));
     }
     
-    // Difficulty filter
+    // Apply difficulty filter  
     if (selectedDifficulties.length > 0) {
       filtered = filtered.filter(term => term.difficulty && selectedDifficulties.includes(term.difficulty));
     }
     
-    // Tags filter
+    // Apply tags filter
     if (selectedTags.length > 0) {
       filtered = filtered.filter(term => 
         term.tags && selectedTags.some(selectedTag => 
@@ -187,7 +189,7 @@ const Index = () => {
       );
     }
     
-    // Sorting
+    // Apply sorting
     if (sortBy !== "default") {
       filtered.sort((a, b) => {
         switch (sortBy) {
@@ -211,11 +213,11 @@ const Index = () => {
       });
     }
     
-    // Only update if we're not searching (preserve search results)
+    // Only update filtered terms if not currently searching
     if (!searchTerm.trim()) {
       setFilteredTerms(filtered);
     }
-  }, [selectedCategories, selectedDifficulties, selectedTags, sortBy]);
+  }, [selectedCategories, selectedDifficulties, selectedTags, sortBy, searchTerm, allTerms]);
 
   useEffect(() => {
     const handleScroll = () => {

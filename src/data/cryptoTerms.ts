@@ -2031,20 +2031,11 @@ export const v0WebsiteTerms: CryptoTerm[] = [
     tags: ['fundraising', 'token-sale', 'investment'],
     examples: ['Ethereum ICO (2014)', 'EOS ICO', 'Various 2017 ICO projects']
   },
-  {
-    id: 'airdrop',
-    term: 'Airdrop',
-    definition: 'The distribution of free cryptocurrency tokens to wallet addresses, often used for marketing or community building.',
-    category: 'Digital Assets',
-    difficulty: 'Beginner',
-    tags: ['distribution', 'marketing', 'free-tokens'],
-    examples: ['Uniswap UNI token distribution', 'Ethereum fork airdrops', 'New project launches']
-  }
 ];
 
-// Combine original and new terms
-export const allCryptoTerms = [...cryptoTerms, ...newCoinbaseTerms, ...v0WebsiteTerms].filter(term => 
-  !['Psychology', 'Culture', 'Economics', 'Identity', 'Tokenization', 'Fundraising'].includes(term.category)
+// Export the main terms array with unique IDs
+export const allCryptoTerms = cryptoTerms.filter((term, index, array) => 
+  index === array.findIndex(t => t.id === term.id)
 );
 
 export const difficulties = ['Beginner', 'Intermediate', 'Advanced'];
