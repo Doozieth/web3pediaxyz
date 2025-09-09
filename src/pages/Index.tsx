@@ -372,6 +372,9 @@ const Index = () => {
         <p className="text-xl text-muted-foreground mb-1 max-w-2xl mx-auto">Your comprehensive guide to cryptocurrency terminology</p>
       </header>
 
+      {/* Placeholder to prevent layout jump when sticky */}
+      {isSearchBarSticky && <div className="h-20"></div>}
+      
       {/* Sticky Search Bar */}
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
         <div className="max-w-4xl mx-auto px-4 py-4">
