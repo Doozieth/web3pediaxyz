@@ -376,19 +376,16 @@ const Index = () => {
       <div className={`transition-all duration-500 ease-in-out ${isSearchBarSticky ? 'fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/20' : 'relative'}`}>
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
-            {/* Home Button - slides in from right behind search bar */}
+            {/* Home Button - gradually reveals from right as user scrolls */}
             <div className="relative overflow-hidden">
               <Button 
                 variant="ghost"
                 size="sm"
-                className={`text-foreground whitespace-nowrap hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent transition-all duration-700 ease-out ${
-                  isSearchBarSticky 
-                    ? 'opacity-100' 
-                    : 'opacity-0'
-                }`}
+                className={`text-foreground whitespace-nowrap hover:scale-105 bg-transparent border-0 shadow-none hover:bg-transparent transition-all duration-300 ease-out`}
                 style={{
-                  transform: `translateX(${isSearchBarSticky ? '0' : '100%'})`,
-                  transitionDelay: isSearchBarSticky ? '300ms' : '0ms'
+                  opacity: Math.min(scrollProgress * 1.5, 1),
+                  transform: `translateX(${Math.max(0, (1 - scrollProgress * 1.5) * 100)}%)`,
+                  clipPath: `inset(0 ${Math.max(0, (1 - scrollProgress * 1.5) * 100)}% 0 0)`
                 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
